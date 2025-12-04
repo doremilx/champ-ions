@@ -12,14 +12,15 @@ class HeaderComponent extends HTMLElement {
   render() {
     const titleSrc = this.getAttribute('title-src');
     const titleAlt = this.getAttribute('title-alt');
-    const titlePage = this.getAttribute('title-page');
     this.innerHTML = `
       <header>
         <a href="/">
           <img src="${titleSrc}" alt="" width="48px"/>
           <span class="sr-only">${titleAlt}</span>
         </a>
-        <h1> ${titlePage} </h1>
+        <a href="/"> Apprendre </a>
+        <a href="/"> Jouer </a>
+        
       </header>
     `;
   }

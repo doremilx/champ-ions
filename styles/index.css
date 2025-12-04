@@ -9,6 +9,8 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #e0d1f1;
+
+  position: relative;
 }
 
 .welcome h1 {
