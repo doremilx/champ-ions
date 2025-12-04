@@ -15,9 +15,18 @@
 </head>
 
 <body>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.149/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.149/examples/jsm/"
+    }
+  }
+  </script>
   <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 
   <div class="welcome">
+    <div id="viewer"></div>
     <h1><span>Super</span><span>Titre</span></h1>
     <div class="cursor-ball"></div>
   </div>
@@ -28,6 +37,7 @@
 
 
   <script type="module" src="./components/index.js"></script>
+  <script type="module" src="./components/camera.js"></script>
 
   <script>
     const ball = document.querySelector(".cursor-ball");
