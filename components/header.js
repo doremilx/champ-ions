@@ -3,7 +3,7 @@ class HeaderComponent extends HTMLElement {
     super();
   }
 
-  static get observedAttributes() { }
+  static get observedAttributes() {}
 
   connectedCallback() {
     this.render();
@@ -24,4 +24,4 @@ class HeaderComponent extends HTMLElement {
   }
 }
 
-customElements.define('header-component', HeaderComponent);
+customElements.define('n-header', HeaderComponent);
