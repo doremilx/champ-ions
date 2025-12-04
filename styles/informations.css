@@ -1,0 +1,47 @@
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 5000px;
+}
+
+/* Le conteneur de la zone d'animation */
+.scroll-path-section {
+  position: relative;
+  /* Assure que l'abeille et le SVG peuvent être positionnés par rapport à lui */
+}
+
+/* Le SVG (le fil) */
+#path-svg {
+  position: absolute; /* ou fixed, si vous voulez que le fil reste dans la même position de la fenêtre */
+  top: 0;
+  left: 50%; /* Centre horizontalement le tracé */
+  height: 100%; /* S'étend sur la hauteur de la section */
+  width: 100px; /* Largeur pour contenir le zig-zag */
+  z-index: 1;
+}
+
+#zig-zag-line {
+  fill: none; /* Le chemin n'est pas rempli */
+  stroke: #ffc300; /* Couleur du fil (jaune/orange pour l'abeille) */
+  stroke-width: 3px;
+  /* Optionnel : style pour le fil (pointillés, etc.) */
+  stroke-linecap: round;
+}
+
+/* L'abeille (le suiveur) */
+#bee-follower {
+  position: absolute;
+  width: 40px; /* Taille de l'abeille */
+  height: 40px;
+  z-index: 2; /* Pour qu'elle soit au-dessus du fil */
+
+  /* L'astuce cruciale : Mettre le point de pivot au centre de l'abeille (50%) 
+      afin que les coordonnées X/Y du path la placent exactement au milieu du fil.
+    */
+  transform: translate(-50%, -50%);
+}
+
+#bee-follower img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
