@@ -28,70 +28,7 @@ body {
   text-align: center;
 }
 
-.cursor-ball {
-  position: absolute;
-  width: 500px; /* Taille de la boule */
-  height: 500px;
-  background: radial-gradient(circle, #d1acff 0%, #dfccf5 84%, #e0d1f1 100%);
-  border-radius: 50%;
-  pointer-events: none; /* Pour ne pas gêner les clics */
-  transform: translate(-50%, -50%);
-  z-index: 1; /* Derrière le h1 */
-  filter: blur(40px); /* Optionnel : effet lumineux */
-  opacity: 0.9;
-}
-
-h2 {
-  font-size: 1.6rem;
-}
-
-section {
-  display: flex;
-  height: 70vh;
-  align-items: center;
-  font-size: 1.3rem;
-}
-
-.infos {
-  background-color: #cbb9f5;
-}
-
-.games {
-  background-color: #b59ff9;
-}
-
-.image,
-.text {
-  display: flex;
-  gap: 20px;
-  padding: 50px;
-  width: 50%;
-}
-
-.text {
-  display: flex;
-  flex-direction: column;
-}
-
-.btn {
-  background-color: white;
-  margin: auto;
-  padding: 5px;
-  border: solid black 2px;
-  padding-right: 20px;
-  padding-left: 20px;
-  border-radius: 35px;
-  font-size: 1.3rem;
-  font-family: 'Raleway', sans-serif;
-}
-
-.btn:hover {
-  background-color: #b59ff9;
-  color: white;
-}
-
-.image img {
-  width: 550px;
-  height: auto;
-  border-radius: 20px;
+.infos-container {
+  height: 100%;
+  background-color: blue;
 }
