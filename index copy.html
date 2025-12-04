@@ -1,71 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Accueil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/reset.css" />
-  <link rel="stylesheet" href="./styles/index.css" />
-  <title>Accueil</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
-    rel="stylesheet" />
-</head>
+  <body>
+    <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 
-<body>
-  <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
-
-  <div class="welcome">
-    <!-- ici met ton canva -->
-    <h1><span>Super</span><span>Titre</span></h1>
-    <div class="cursor-ball"></div>
-  </div>
-
-
-  <section class="infos">
-    <div class="text">
-      <h2>Informations</h2>
-      <p>
-        Le numérique permet de développer l’aisance des enfants et des élèves dans l’usage du numérique dans des
-        situations de recherche, de partage, de travail collaboratif en présence ou à distance, et enfin dans des
-        travaux éducatifs.
-      </p>
-
-      <a class='btn' href="jeu.html">En savoir plus</a>
-    </div>
-    <div class="image">
-      <img
-        src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-        alt="">
-    </div>
-  </section>
-
-  <section class="games">
-    <div class="image">
-      <img
-        src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-        alt="" />
+    <div class="welcome">
+      <div id="viewer"></div>
+      <h1><span>Super</span><span>Titre</span></h1>
+      <div class="cursor-ball"></div>
     </div>
 
-    <div class="text">
-      <h2>Jouer</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto sequi est, saepe quos eveniet, cum nisi
-        alias totam amet earum excepturi molestiae repudiandae! Similique, cumque laborum maxime autem officia id
-        excepturi itaque, quia ut, ab velit at explicabo hic sit adipisci aspernatur asperiores ipsum quo nam! Sed
-        deserunt consequuntur molestias!
-      </p>
+    <script type="module" src="./components/index.js"></script>
+    <script type="module" src="./components/camera.js"></script>
 
-      <a class='btn' href="jeu.html">Jouer</a>
-    </div>
-  </section>
-
-
-  <script type="module" src="./components/index.js"></script>
-
-  <!-- <script>
+    <!-- <script>
     const ball = document.querySelector(".cursor-ball");
 
     document.addEventListener("mousemove", (e) => {
@@ -74,6 +35,5 @@
     });
 
   </script> -->
-</body>
-
+  </body>
 </html>
