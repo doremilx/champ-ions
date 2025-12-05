@@ -110,7 +110,7 @@ body {
   /* Nous utilisons la propriété 'transform' de GSAP, mais il faut une base absolute */
 }
 
-.infos-container > p {
+.texte-intro {
   min-width: 600px;
   max-width: 75%;
   margin-bottom: 150px;
@@ -120,6 +120,7 @@ body {
   border-radius: 40px;
   padding: 20px;
   background-color: #ffffff17;
+  margin-inline: auto;
 }
 
 .info {
