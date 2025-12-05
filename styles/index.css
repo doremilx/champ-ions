@@ -25,10 +25,15 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 5rem;
-  font-family: 'Titan One', sans-serif;
+  font-family: 'Londrina Solid', sans-serif;
   z-index: 2; /* Le texte au-dessus de la boule */
   line-height: 5rem;
-  max-width: 800px;
+  max-width: 2000px;
+}
+
+.yellow {
+  color: #f2cf5f;
+  display: flex;
 }
 #viewer {
   margin: 0 !important;
@@ -106,6 +111,7 @@ body {
   width: 600px;
   max-width: 90%;
   margin-bottom: 30px;
+  color: white;
 }
 
 .info {
