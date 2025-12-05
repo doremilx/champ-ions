@@ -50,8 +50,9 @@ body {
   flex-direction: column;
   align-items: center;
   color: #f2cf5f;
-  margin-left: 200px;
+  width: fit-content;
   margin-right: auto;
+  margin-left: 200px;
 }
 .texte-special > h2 {
   margin-bottom: -50px;
@@ -223,6 +224,6 @@ h2 {
     margin-left: 100px !important;
   }
   .texte-special {
-    margin: 0;
+    margin-inline: auto;
   }
 }
