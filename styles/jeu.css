@@ -1,6 +1,6 @@
 body {
   font-family: 'Raleway', sans-serif;
-  background: linear-gradient(#977dff 0%, #0033ff 80%, #0600ab 100%);
+  background: linear-gradient(#ffccf2 0%, #977dff 20%, #0033ff 100%);
   background-attachment: fixed;
 }
 
@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #007bff;
+  /*   background-color: #007bff; */
 }
 
 h1 {
