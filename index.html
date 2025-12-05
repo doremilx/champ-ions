@@ -52,7 +52,7 @@
     </div>
 
     <div class="info">
-      <h2>400 millions d'appareils</h2>
+      <h2><span id="counter">0</span> millions d'appareils</h2>
       <p>
         Nombre d’appareils qui risquent de partir à la décharge après l’obsolescence de Windows 10 (depuis 14 octobre
         2025).
@@ -87,9 +87,33 @@
     <img src="img/logoNIRD.svg" alt="Logo NIRD suiveur" id="follower-logo" />
 
     <svg id="path-svg" viewBox="0 0 100 1000" preserveAspectRatio="xMinYMin meet">
+      <style>
+        /* CSS embarqué : prioritaire sur beaucoup de fichiers externes */
+        #zig-zag-line {
+          stroke: #FFD100;
+          stroke-width: 8;
+          fill: none;
+          stroke-linecap: round;
+          /* arrondit les extrémités */
+          stroke-linejoin: round;
+          /* arrondit les jonctions */
+          stroke-miterlimit: 2;
+          /* limite les pointes excessives */
+          vector-effect: non-scaling-stroke;
+          /* garde la largeur lors du scale */
+          shape-rendering: geometricPrecision;
+          /* évite les crénelages causés par crispEdges */
+          /* si jamais un reset CSS fixe shape-rendering : */
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      </style>
+
       <path id="zig-zag-line"
         d="M 50 0 L 10 120 L 90 240 L 30 360 L 70 480 L 10 600 L 90 720 L 50 840 L 10 960 L 50 1000" />
     </svg>
+
+
 
     <div class="cta">
       <h2 class="ctatitle">Plonge dans le futur du numérique</h2>
@@ -117,6 +141,44 @@
     });
 
   </script>
+
+  <script>
+    const span = document.getElementById("counter");
+    const target = 400;
+    const duration = 1500;
+    let hasPlayed = false; // pour éviter de rejouer l'animation
+
+    function startAnimation() {
+      const start = performance.now();
+
+      function animate(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = Math.floor(progress * target);
+        span.textContent = value.toLocaleString("fr-FR");
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Observer pour détecter quand le span rentre dans l'écran
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasPlayed) {
+          hasPlayed = true;
+          startAnimation();
+          observer.disconnect(); // stop l’observer pour perf
+        }
+      });
+    });
+
+    // observer cible le span
+    observer.observe(span);
+  </script>
+
 
 </body>
 
