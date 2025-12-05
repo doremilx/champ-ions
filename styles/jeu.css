@@ -79,9 +79,9 @@ h2 {
 }
 
 .btn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+  padding: 8px 15px;
+  border: solid 2px;
+  border-radius: 50px;
   cursor: pointer;
   margin-top: 10px;
   display: block;
