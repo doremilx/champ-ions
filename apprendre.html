@@ -1,511 +1,554 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Installation de Linux Interactive</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap" rel="stylesheet" />
-<style>
-body{
-    background-color: #977dff;
-    color: white;
-    font-family: 'Raleway', sans-serif;
-}
-h3{
-    font-family: 'Titan One';
-    font-weight: normal;
-}
-h3 span{
-    background-color: #f2d160;
-    color: black;
-    padding: 5px 10px;
-    border-radius: 50px;
-    aspect-ratio: 1/1;
-    margin-right: 8px;
-}
-.step { 
-    padding: 15px; 
-    border-radius: 10px; 
-    margin-bottom: 15px; 
-    background: #8c73ff; 
-    transition: 0.3s; 
-}
-.step.locked { 
-    opacity: 0.5; 
-    pointer-events: none; 
-}
-.step.done { 
-    border: 2px solid #1d72b8; 
-    background: #b7a8ff; 
-}
-.step.active { 
-    border: 2px solid #2ea44f; 
-}
-.step div { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-.step button {
-    border: solid 2px;
-    font-size: 1.1rem;
-    background: #e0d1f1;
-    padding: 5px 20px;
-    border-radius: 10px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    cursor: pointer;
-}
-canvas { border:1px solid #ccc; display:block; margin:15px 0; background:#222; }
-</style>
-</head>
-<body>
-<main>
-    <section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation de Linux Interactive</title>
+    <link rel="icon" href="img/LogoNIRD.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #977dff;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+      }
+      h3 {
+        font-family: 'Titan One';
+        font-weight: normal;
+      }
+      h3 span {
+        background-color: #f2d160;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 50px;
+        aspect-ratio: 1/1;
+        margin-right: 8px;
+      }
+      .step {
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        background: #8c73ff;
+        transition: 0.3s;
+      }
+      .step.locked {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .step.done {
+        border: 2px solid #1d72b8;
+        background: #b7a8ff;
+      }
+      .step.active {
+        border: 2px solid #2ea44f;
+      }
+      .step div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .step button {
+        border: solid 2px;
+        font-size: 1.1rem;
+        background: #e0d1f1;
+        padding: 5px 20px;
+        border-radius: 10px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        cursor: pointer;
+      }
+      canvas {
+        border: 1px solid #ccc;
+        display: block;
+        margin: 15px 0;
+        background: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
         <h2>Installation de Linux</h2>
         <div id="steps-container"></div>
-    </section>
-</main>
+      </section>
+    </main>
 
-<script>
-const stepsData = [
-    { 
-        title: "Téléchargement",
-        description: "Clique sur le bouton pour télécharger la version de Linux NIRD.",
-        type: "click-bar",
-        buttons: ["Linux NIRD ↓"]
-    },
+    <script>
+      const stepsData = [
+        {
+          title: 'Téléchargement',
+          description: 'Clique sur le bouton pour télécharger la version de Linux NIRD.',
+          type: 'click-bar',
+          buttons: ['Linux NIRD ↓'],
+        },
 
-    { 
-        title: "Création de la clé",
-        description: "Insère une clé USB vierge sur laquelle on grave le fichier téléchargé.",
-        type: "dodge",
-        buttons: ["→ Graver avec Ventoy"]
-    },
+        {
+          title: 'Création de la clé',
+          description: 'Insère une clé USB vierge sur laquelle on grave le fichier téléchargé.',
+          type: 'dodge',
+          buttons: ['→ Graver avec Ventoy'],
+        },
 
-    { 
-        title: "Redémarrage",
-        description: "Garde la clé USB insérée et redémarre ton appareil.",
-        type: "pong",
-        buttons: ["Rédémarrer"]
-    },
+        {
+          title: 'Redémarrage',
+          description: 'Garde la clé USB insérée et redémarre ton appareil.',
+          type: 'pong',
+          buttons: ['Rédémarrer'],
+        },
 
-    { 
-        title: "Ouvrir le menu Boot",
-        description: "Dès le redémarrage, appuie sur la touche (souvent F12) pour ouvrir le menu Boot de ton appareil.",
-        type: "keys", // ← JEU N°4 : successions de touches
-        // Les touches que l’utilisateur devra appuyer successivement :
-        buttons: ["s", "u", "d", "o", " ", "a", "p", "t", " ", "u", "p", "d", "a", "t", "e"]
-    },
+        {
+          title: 'Ouvrir le menu Boot',
+          description:
+            'Dès le redémarrage, appuie sur la touche (souvent F12) pour ouvrir le menu Boot de ton appareil.',
+          type: 'keys', // ← JEU N°4 : successions de touches
+          // Les touches que l’utilisateur devra appuyer successivement :
+          buttons: ['s', 'u', 'd', 'o', ' ', 'a', 'p', 't', ' ', 'u', 'p', 'd', 'a', 't', 'e'],
+        },
 
-    { 
-        title: "Utilisation de la clé",
-        description: "Dans le menu de Boot, sélectionnez votre clef.",
-        type: "drag-button",
-        buttons: ["> USB HDD [Linux NIRD]"]
-    },
-];
+        {
+          title: 'Utilisation de la clé',
+          description: 'Dans le menu de Boot, sélectionnez votre clef.',
+          type: 'drag-button',
+          buttons: ['> USB HDD [Linux NIRD]'],
+        },
+      ];
 
-const container = document.getElementById("steps-container");
-const canvas = document.createElement("canvas");
-canvas.id="gameCanvas";
-canvas.width=400;
-canvas.height=200;
-canvas.style.display="none";
-container.appendChild(canvas);
-const ctx = canvas.getContext("2d");
+      const container = document.getElementById('steps-container');
+      const canvas = document.createElement('canvas');
+      canvas.id = 'gameCanvas';
+      canvas.width = 400;
+      canvas.height = 200;
+      canvas.style.display = 'none';
+      container.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
 
-let state = stepsData.map((s,i)=>({ ...s, index:i, status:i===0?"active":"locked" }));
+      let state = stepsData.map((s, i) => ({ ...s, index: i, status: i === 0 ? 'active' : 'locked' }));
 
-function renderSteps() {
-    container.innerHTML="";
-    state.forEach(step=>{
-        const div = document.createElement("div");
-        div.className = "step " + step.status;
-        const h3 = document.createElement("h3");
-        h3.innerHTML = `<span>${step.index+1}</span>${step.title}`;
-        div.appendChild(h3);
-        const p = document.createElement("p");
-        p.textContent = step.description;
-        div.appendChild(p);
-        const btnContainer = document.createElement("div");
+      function renderSteps() {
+        container.innerHTML = '';
+        state.forEach((step) => {
+          const div = document.createElement('div');
+          div.className = 'step ' + step.status;
+          const h3 = document.createElement('h3');
+          h3.innerHTML = `<span>${step.index + 1}</span>${step.title}`;
+          div.appendChild(h3);
+          const p = document.createElement('p');
+          p.textContent = step.description;
+          div.appendChild(p);
+          const btnContainer = document.createElement('div');
 
-        step.buttons.forEach(label=>{
-            const btn = document.createElement("button");
+          step.buttons.forEach((label) => {
+            const btn = document.createElement('button');
             btn.textContent = label;
             btnContainer.appendChild(btn);
 
-            if(step.status==="active") {
-                btn.addEventListener("click", ()=>{
-                    // Afficher le canvas juste après l'étape active
-                    if(canvas.parentNode !== div) div.appendChild(canvas);
-                    startMiniGame(step, ()=>validateStep(step.index));
-                });
+            if (step.status === 'active') {
+              btn.addEventListener('click', () => {
+                // Afficher le canvas juste après l'étape active
+                if (canvas.parentNode !== div) div.appendChild(canvas);
+                startMiniGame(step, () => validateStep(step.index));
+              });
             }
+          });
+
+          div.appendChild(btnContainer);
+          container.appendChild(div);
         });
+      }
 
-        div.appendChild(btnContainer);
-        container.appendChild(div);
-    });
-}
+      function validateStep(i) {
+        state[i].status = 'done';
+        if (state[i + 1]) state[i + 1].status = 'active';
+        canvas.style.display = 'none'; // masquer canvas après succès
+        renderSteps();
+      }
 
-function validateStep(i){
-    state[i].status="done";
-    if(state[i+1]) state[i+1].status="active";
-    canvas.style.display="none"; // masquer canvas après succès
-    renderSteps();
-}
+      // --- MINI-JEUX ---
+      function startMiniGame(step, onSuccess) {
+        canvas.style.display = 'block';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.removeEventListener('click', canvas._clickHandler);
+        cancelAnimationFrame(canvas._anim);
 
-// --- MINI-JEUX ---
-function startMiniGame(step, onSuccess){
-    canvas.style.display="block";
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    canvas.removeEventListener("click", canvas._clickHandler);
-    cancelAnimationFrame(canvas._anim);
-
-    if(step.type==="click-bar"){
-        let progress = 0;
-        function draw(){
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.fillStyle="#555"; ctx.fillRect(50,80,300,30);
-            ctx.fillStyle="#2ea44f"; ctx.fillRect(50,80,3*progress,30);
-            ctx.strokeStyle="#fff"; ctx.strokeRect(50,80,300,30);
-            ctx.font="16px Arial"; ctx.fillStyle="#fff";
-            ctx.fillText(`Progression: ${Math.round(progress)}%`, 150,70);
-        }
-        function loop(){
-            if(progress>0) progress-=0.025;
-            if(progress<0) progress=0;
+        if (step.type === 'click-bar') {
+          let progress = 0;
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#555';
+            ctx.fillRect(50, 80, 300, 30);
+            ctx.fillStyle = '#2ea44f';
+            ctx.fillRect(50, 80, 3 * progress, 30);
+            ctx.strokeStyle = '#fff';
+            ctx.strokeRect(50, 80, 300, 30);
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#fff';
+            ctx.fillText(`Progression: ${Math.round(progress)}%`, 150, 70);
+          }
+          function loop() {
+            if (progress > 0) progress -= 0.025;
+            if (progress < 0) progress = 0;
             draw();
-            if(progress>=99){
-                canvas.style.display="none";
-                canvas.removeEventListener("click", canvas._clickHandler);
-                onSuccess();
-                return;
+            if (progress >= 99) {
+              canvas.style.display = 'none';
+              canvas.removeEventListener('click', canvas._clickHandler);
+              onSuccess();
+              return;
             }
             canvas._anim = requestAnimationFrame(loop);
-        }
-        function clickHandler(){ progress+=50; if(progress>99) progress=100; }
-        canvas.addEventListener("click", clickHandler);
-        canvas._clickHandler = clickHandler;
-        loop();
-    } else if(step.type==="dodge"){
-        let player={x:180,y:170,w:40,h:20}, obstacles=[], frames=0, survivalTime=1, timer=1;
-        let keys={ArrowLeft:false,ArrowRight:false};
-        function keyDownHandler(e){ if(keys.hasOwnProperty(e.key)) keys[e.key]=true; }
-        function keyUpHandler(e){ if(keys.hasOwnProperty(e.key)) keys[e.key]=false; }
-        window.addEventListener("keydown", keyDownHandler);
-        window.addEventListener("keyup", keyUpHandler);
-        function draw(){
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.fillStyle="#0f0"; ctx.fillRect(player.x,player.y,player.w,player.h);
-            ctx.fillStyle="#f00"; obstacles.forEach(o=>ctx.fillRect(o.x,o.y,o.w,o.h));
-            ctx.font="16px Arial"; ctx.fillStyle="#fff"; ctx.fillText(`Survive: ${Math.ceil(timer)}s`,150,20);
-        }
-        function update(delta){
+          }
+          function clickHandler() {
+            progress += 50;
+            if (progress > 99) progress = 100;
+          }
+          canvas.addEventListener('click', clickHandler);
+          canvas._clickHandler = clickHandler;
+          loop();
+        } else if (step.type === 'dodge') {
+          let player = { x: 180, y: 170, w: 40, h: 20 },
+            obstacles = [],
+            frames = 0,
+            survivalTime = 1,
+            timer = 1;
+          let keys = { ArrowLeft: false, ArrowRight: false };
+          function keyDownHandler(e) {
+            if (keys.hasOwnProperty(e.key)) keys[e.key] = true;
+          }
+          function keyUpHandler(e) {
+            if (keys.hasOwnProperty(e.key)) keys[e.key] = false;
+          }
+          window.addEventListener('keydown', keyDownHandler);
+          window.addEventListener('keyup', keyUpHandler);
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.fillRect(player.x, player.y, player.w, player.h);
+            ctx.fillStyle = '#f00';
+            obstacles.forEach((o) => ctx.fillRect(o.x, o.y, o.w, o.h));
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#fff';
+            ctx.fillText(`Survive: ${Math.ceil(timer)}s`, 150, 20);
+          }
+          function update(delta) {
             frames++;
-            if(keys.ArrowLeft) player.x-=4;
-            if(keys.ArrowRight) player.x+=4;
-            if(player.x<0) player.x=0; if(player.x>canvas.width-player.w) player.x=canvas.width-player.w;
-            if(frames%50===0) obstacles.push({x:Math.random()*360,y:-20,w:20,h:20});
-            obstacles.forEach(o=>o.y+=2);
-            obstacles = obstacles.filter(o=>o.y<canvas.height);
-            if(obstacles.some(o=>o.x<player.x+player.w && o.x+o.w>player.x && o.y<player.y+player.h && o.y+o.h>player.y)){
-                timer = survivalTime;
-                obstacles=[];
+            if (keys.ArrowLeft) player.x -= 4;
+            if (keys.ArrowRight) player.x += 4;
+            if (player.x < 0) player.x = 0;
+            if (player.x > canvas.width - player.w) player.x = canvas.width - player.w;
+            if (frames % 50 === 0) obstacles.push({ x: Math.random() * 360, y: -20, w: 20, h: 20 });
+            obstacles.forEach((o) => (o.y += 2));
+            obstacles = obstacles.filter((o) => o.y < canvas.height);
+            if (
+              obstacles.some(
+                (o) =>
+                  o.x < player.x + player.w &&
+                  o.x + o.w > player.x &&
+                  o.y < player.y + player.h &&
+                  o.y + o.h > player.y,
+              )
+            ) {
+              timer = survivalTime;
+              obstacles = [];
             }
-            timer-=delta;
-            if(timer<=0){
-                canvas.style.display="none";
-                window.removeEventListener("keydown", keyDownHandler);
-                window.removeEventListener("keyup", keyUpHandler);
-                onSuccess();
+            timer -= delta;
+            if (timer <= 0) {
+              canvas.style.display = 'none';
+              window.removeEventListener('keydown', keyDownHandler);
+              window.removeEventListener('keyup', keyUpHandler);
+              onSuccess();
             }
-        }
-        let lastTime = performance.now();
-        function loop(time){
-            let delta = (time-lastTime)/1000; lastTime=time;
-            update(delta); draw();
-            canvas._anim=requestAnimationFrame(loop);
-        }
-        loop(performance.now());
-    }else if(step.type==="pong") {
+          }
+          let lastTime = performance.now();
+          function loop(time) {
+            let delta = (time - lastTime) / 1000;
+            lastTime = time;
+            update(delta);
+            draw();
+            canvas._anim = requestAnimationFrame(loop);
+          }
+          loop(performance.now());
+        } else if (step.type === 'pong') {
+          let paddle = { x: 170, y: 180, w: 60, h: 10 };
+          let currentBall = null;
+          let ballLocked = false; // empêche le double comptage
+          let hits = 0;
 
-    let paddle = { x: 170, y: 180, w: 60, h: 10 };
-    let currentBall = null;
-    let ballLocked = false; // empêche le double comptage
-    let hits = 0;
+          const totalBalls = 10;
+          let ballCount = 0;
 
-    const totalBalls = 10;
-    let ballCount = 0;
+          // ---- Création d'une balle ----
+          function createBall() {
+            return {
+              x: Math.random() * (canvas.width - 20) + 10,
+              y: 0,
+              r: 8,
+              dy: 1.5, // balle lente
+            };
+          }
 
-    // ---- Création d'une balle ----
-    function createBall() {
-        return {
-            x: Math.random() * (canvas.width - 20) + 10,
-            y: 0,
-            r: 8,
-            dy: 1.5 // balle lente
-        };
-    }
+          // ---- Affichage ----
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // ---- Affichage ----
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Paddle
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(paddle.x, paddle.y, paddle.w, paddle.h);
 
-        // Paddle
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(paddle.x, paddle.y, paddle.w, paddle.h);
+            // Balle
+            if (currentBall) {
+              ctx.beginPath();
+              ctx.arc(currentBall.x, currentBall.y, currentBall.r, 0, Math.PI * 2);
+              ctx.fillStyle = '#ff0';
+              ctx.fill();
+            }
 
-        // Balle
-        if (currentBall) {
-            ctx.beginPath();
-            ctx.arc(currentBall.x, currentBall.y, currentBall.r, 0, Math.PI * 2);
-            ctx.fillStyle = "#ff0";
-            ctx.fill();
-        }
+            // Compteur
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#fff';
+            ctx.fillText(`Renvois: ${hits}/${totalBalls}`, 140, 20);
+          }
 
-        // Compteur
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#fff";
-        ctx.fillText(`Renvois: ${hits}/${totalBalls}`, 140, 20);
-    }
+          // ---- Mise à jour ----
+          function update() {
+            if (!currentBall) return;
 
-    // ---- Mise à jour ----
-    function update() {
-        if (!currentBall) return;
+            currentBall.y += currentBall.dy;
 
-        currentBall.y += currentBall.dy;
+            // Collision avec le paddle
+            if (
+              !ballLocked &&
+              currentBall.y + currentBall.r >= paddle.y &&
+              currentBall.x > paddle.x &&
+              currentBall.x < paddle.x + paddle.w
+            ) {
+              ballLocked = true; // empêche double comptage
+              hits++;
+              nextBall();
+              return;
+            }
 
-        // Collision avec le paddle
-        if (
-            !ballLocked &&
-            currentBall.y + currentBall.r >= paddle.y &&
-            currentBall.x > paddle.x &&
-            currentBall.x < paddle.x + paddle.w
-        ) {
-            ballLocked = true; // empêche double comptage
-            hits++;
-            nextBall();
-            return;
-        }
+            // Balle qui tombe sans être renvoyée
+            if (!ballLocked && currentBall.y - currentBall.r > canvas.height) {
+              ballLocked = true;
+              nextBall();
+              return;
+            }
+          }
 
-        // Balle qui tombe sans être renvoyée
-        if (!ballLocked && currentBall.y - currentBall.r > canvas.height) {
-            ballLocked = true;
-            nextBall();
-            return;
-        }
-    }
+          // ---- Gestion des balles successives ----
+          function nextBall() {
+            ballCount++;
 
-    // ---- Gestion des balles successives ----
-    function nextBall() {
-        ballCount++;
-
-        // Encore des balles à envoyer ?
-        if (ballCount < totalBalls) {
-            currentBall = createBall();
-            ballLocked = false;
-        } else {
-            // Fin des 10 balles → évaluation
-            if (hits >= 5) {
+            // Encore des balles à envoyer ?
+            if (ballCount < totalBalls) {
+              currentBall = createBall();
+              ballLocked = false;
+            } else {
+              // Fin des 10 balles → évaluation
+              if (hits >= 5) {
                 // Succès
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                ctx.font = "18px Arial";
-                ctx.fillStyle = "#fff";
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = '18px Arial';
+                ctx.fillStyle = '#fff';
                 ctx.fillText(`Bravo ! ${hits}/10 balles renvoyées`, 80, 100);
 
                 setTimeout(() => {
-                    canvas.style.display = "none";
-                    canvas.removeEventListener("mousemove", canvas._mouseHandler);
-                    onSuccess();
+                  canvas.style.display = 'none';
+                  canvas.removeEventListener('mousemove', canvas._mouseHandler);
+                  onSuccess();
                 }, 1500);
-            } else {
+              } else {
                 // Échec → reset total
                 hits = 0;
                 ballCount = 0;
                 currentBall = createBall();
                 ballLocked = false;
+              }
             }
-        }
-    }
+          }
 
-    // ---- Boucle de jeu ----
-    function loop() {
-        update();
-        draw();
-        canvas._anim = requestAnimationFrame(loop);
-    }
+          // ---- Boucle de jeu ----
+          function loop() {
+            update();
+            draw();
+            canvas._anim = requestAnimationFrame(loop);
+          }
 
-    // ---- Contrôle du paddle ----
-    canvas._mouseHandler = e => {
-        const rect = canvas.getBoundingClientRect();
-        paddle.x = e.clientX - rect.left - paddle.w / 2;
+          // ---- Contrôle du paddle ----
+          canvas._mouseHandler = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            paddle.x = e.clientX - rect.left - paddle.w / 2;
 
-        if (paddle.x < 0) paddle.x = 0;
-        if (paddle.x > canvas.width - paddle.w)
-            paddle.x = canvas.width - paddle.w;
-    };
+            if (paddle.x < 0) paddle.x = 0;
+            if (paddle.x > canvas.width - paddle.w) paddle.x = canvas.width - paddle.w;
+          };
 
-    canvas.addEventListener("mousemove", canvas._mouseHandler);
+          canvas.addEventListener('mousemove', canvas._mouseHandler);
 
-    // ---- Démarrage ----
-    currentBall = createBall();
-    ballLocked = false;
-    loop();
-}
-else if(step.type === "keys") {
+          // ---- Démarrage ----
+          currentBall = createBall();
+          ballLocked = false;
+          loop();
+        } else if (step.type === 'keys') {
+          // La séquence utilisée par le mini-jeu
+          const sequence = step.buttons;
 
-    // La séquence utilisée par le mini-jeu
-    const sequence = step.buttons;
+          let currentIndex = 0;
 
-    let currentIndex = 0;
+          canvas.style.display = 'block';
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    canvas.style.display = "block";
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    function draw() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
+            // Texte
+            ctx.font = '20px Arial';
+            ctx.fillStyle = '#fff';
+            ctx.fillText('Tape la commande Linux :', 20, 40);
 
-        // Texte
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "#fff";
-        ctx.fillText("Tape la commande Linux :", 20, 40);
+            // Zone console
+            ctx.fillStyle = 'rgba(0,0,0,0.6)';
+            ctx.fillRect(20, 70, 360, 120);
+            ctx.strokeStyle = 'rgb(0,200,0)';
+            ctx.strokeRect(20, 70, 360, 120);
 
-        // Zone console
-        ctx.fillStyle = "rgba(0,0,0,0.6)";
-        ctx.fillRect(20, 70, 360, 120);
-        ctx.strokeStyle = "rgb(0,200,0)";
-        ctx.strokeRect(20, 70, 360, 120);
+            // Commande en cours d'écriture
+            ctx.font = '22px monospace';
+            ctx.fillStyle = 'rgb(0,255,0)';
+            const typed = sequence.slice(0, currentIndex).join('');
+            ctx.fillText('> ' + typed, 30, 130);
 
-        // Commande en cours d'écriture
-        ctx.font = "22px monospace";
-        ctx.fillStyle = "rgb(0,255,0)";
-        const typed = sequence.slice(0, currentIndex).join("");
-        ctx.fillText("> " + typed, 30, 130);
+            if (currentIndex < sequence.length) {
+              ctx.font = '18px Arial';
+              ctx.fillStyle = '#fff';
+              ctx.fillText('Touche suivante :', 20, 220);
 
-        if (currentIndex < sequence.length) {
-            ctx.font = "18px Arial";
-            ctx.fillStyle = "#fff";
-            ctx.fillText("Touche suivante :", 20, 220);
+              ctx.font = '28px Arial';
+              ctx.fillStyle = '#ffd700';
+              ctx.fillText(sequence[currentIndex] === ' ' ? '[espace]' : sequence[currentIndex], 240, 220);
+            }
 
-            ctx.font = "28px Arial";
-            ctx.fillStyle = "#ffd700";
-            ctx.fillText(
-                sequence[currentIndex] === " " ? "[espace]" : sequence[currentIndex],
-                240, 220
-            );
-        }
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#ccc';
+            ctx.fillText(`Progression : ${currentIndex}/${sequence.length}`, 20, 260);
+          }
 
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#ccc";
-        ctx.fillText(`Progression : ${currentIndex}/${sequence.length}`, 20, 260);
-    }
+          function keyHandler(e) {
+            if (e.repeat) return;
 
-    function keyHandler(e) {
-        if (e.repeat) return;
+            const expected = sequence[currentIndex];
+            const pressed = e.key === ' ' ? ' ' : e.key;
 
-        const expected = sequence[currentIndex];
-        const pressed = e.key === " " ? " " : e.key;
+            if (pressed === expected) {
+              currentIndex++;
 
-        if (pressed === expected) {
-            currentIndex++;
-
-            if (currentIndex >= sequence.length) {
+              if (currentIndex >= sequence.length) {
                 // Fin du jeu
-                window.removeEventListener("keydown", keyHandler);
+                window.removeEventListener('keydown', keyHandler);
 
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                ctx.font = "24px Arial";
-                ctx.fillStyle = "#0f0";
-                ctx.fillText("Commande exécutée !", 90, 140);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = '24px Arial';
+                ctx.fillStyle = '#0f0';
+                ctx.fillText('Commande exécutée !', 90, 140);
 
                 setTimeout(() => {
-                    canvas.style.display = "none";
-                    onSuccess();
+                  canvas.style.display = 'none';
+                  onSuccess();
                 }, 1200);
                 return;
+              }
             }
+
+            draw();
+          }
+
+          window.addEventListener('keydown', keyHandler);
+          draw();
+        } else if (step.type === 'drag-button') {
+          canvas.style.display = 'block';
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Paramètres
+          const target = { x: 300, y: 80, w: 60, h: 40 };
+          let dragging = false;
+          const button = { x: 50, y: 80, w: 60, h: 40 };
+
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Zone cible
+            ctx.fillStyle = '#2ea44f';
+            ctx.fillRect(target.x, target.y, target.w, target.h);
+            ctx.strokeStyle = '#fff';
+            ctx.strokeRect(target.x, target.y, target.w, target.h);
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#fff';
+            ctx.fillText('Dépose ici', target.x, target.y - 5);
+
+            // Bouton à déplacer
+            ctx.fillStyle = '#f2d160';
+            ctx.fillRect(button.x, button.y, button.w, button.h);
+            ctx.strokeStyle = '#000';
+            ctx.strokeRect(button.x, button.y, button.w, button.h);
+            ctx.fillStyle = '#000';
+            ctx.font = '16px Arial';
+            ctx.fillText('Glisser', button.x + 5, button.y + 25);
+          }
+
+          function mouseDown(e) {
+            const rect = canvas.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+            if (mx > button.x && mx < button.x + button.w && my > button.y && my < button.y + button.h) {
+              dragging = true;
+            }
+          }
+
+          function mouseMove(e) {
+            if (!dragging) return;
+            const rect = canvas.getBoundingClientRect();
+            button.x = e.clientX - rect.left - button.w / 2;
+            button.y = e.clientY - rect.top - button.h / 2;
+            draw();
+          }
+
+          function mouseUp() {
+            dragging = false;
+            // Vérifier si bouton dans la zone cible
+            if (
+              button.x + button.w / 2 > target.x &&
+              button.x + button.w / 2 < target.x + target.w &&
+              button.y + button.h / 2 > target.y &&
+              button.y + button.h / 2 < target.y + target.h
+            ) {
+              canvas.removeEventListener('mousedown', mouseDown);
+              canvas.removeEventListener('mousemove', mouseMove);
+              canvas.removeEventListener('mouseup', mouseUp);
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              ctx.fillStyle = '#0f0';
+              ctx.font = '24px Arial';
+              ctx.fillText('Succès !', 150, 100);
+              setTimeout(() => {
+                canvas.style.display = 'none';
+                onSuccess();
+              }, 1000);
+            }
+          }
+
+          canvas.addEventListener('mousedown', mouseDown);
+          canvas.addEventListener('mousemove', mouseMove);
+          canvas.addEventListener('mouseup', mouseUp);
+
+          draw();
         }
+      }
 
-        draw();
-    }
-
-    window.addEventListener("keydown", keyHandler);
-    draw();
-}
-else if(step.type === "drag-button") {
-    canvas.style.display = "block";
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    // Paramètres
-    const target = {x: 300, y: 80, w: 60, h: 40};
-    let dragging = false;
-    const button = {x: 50, y: 80, w: 60, h: 40};
-
-    function draw() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-
-        // Zone cible
-        ctx.fillStyle = "#2ea44f";
-        ctx.fillRect(target.x, target.y, target.w, target.h);
-        ctx.strokeStyle = "#fff";
-        ctx.strokeRect(target.x, target.y, target.w, target.h);
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#fff";
-        ctx.fillText("Dépose ici", target.x, target.y - 5);
-
-        // Bouton à déplacer
-        ctx.fillStyle = "#f2d160";
-        ctx.fillRect(button.x, button.y, button.w, button.h);
-        ctx.strokeStyle = "#000";
-        ctx.strokeRect(button.x, button.y, button.w, button.h);
-        ctx.fillStyle = "#000";
-        ctx.font = "16px Arial";
-        ctx.fillText("Glisser", button.x + 5, button.y + 25);
-    }
-
-    function mouseDown(e) {
-        const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
-        if(mx > button.x && mx < button.x + button.w && my > button.y && my < button.y + button.h){
-            dragging = true;
-        }
-    }
-
-    function mouseMove(e) {
-        if(!dragging) return;
-        const rect = canvas.getBoundingClientRect();
-        button.x = e.clientX - rect.left - button.w/2;
-        button.y = e.clientY - rect.top - button.h/2;
-        draw();
-    }
-
-    function mouseUp() {
-        dragging = false;
-        // Vérifier si bouton dans la zone cible
-        if(button.x + button.w/2 > target.x && button.x + button.w/2 < target.x + target.w &&
-           button.y + button.h/2 > target.y && button.y + button.h/2 < target.y + target.h){
-               canvas.removeEventListener("mousedown", mouseDown);
-               canvas.removeEventListener("mousemove", mouseMove);
-               canvas.removeEventListener("mouseup", mouseUp);
-               ctx.clearRect(0,0,canvas.width,canvas.height);
-               ctx.fillStyle = "#0f0";
-               ctx.font = "24px Arial";
-               ctx.fillText("Succès !", 150, 100);
-               setTimeout(()=>{canvas.style.display="none"; onSuccess();}, 1000);
-        }
-    }
-
-    canvas.addEventListener("mousedown", mouseDown);
-    canvas.addEventListener("mousemove", mouseMove);
-    canvas.addEventListener("mouseup", mouseUp);
-
-    draw();
-}
-
-}
-
-renderSteps();
-</script>
-</body>
+      renderSteps();
+    </script>
+  </body>
 </html>

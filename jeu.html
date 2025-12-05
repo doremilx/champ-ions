@@ -1,211 +1,234 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guide des alternatives</title>
+    <link rel="icon" href="img/LogoNIRD.svg" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/jeu.css" />
+    <link rel="stylesheet" href="./styles/components/header2.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guide des alternatives</title>
-  <link rel="stylesheet" href="./styles/reset.css" />
-  <link rel="stylesheet" href="./styles/jeu.css" />
-  <link rel="stylesheet" href="./styles/components/header2.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titan+One&display=swap"
-    rel="stylesheet" />
-</head>
+  <body>
+    <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 
-<body>
-  <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
-
-  <div class="title">
-    <h1><span class="h1-1">Au delà des</span><span>licenses payantes,</span><span class="h1-1">le guide :</span></h1>
-  </div>
-
-  <div class="software-container">
-    <div class="software-card" id="card-word" data-original-name="Word"
-      data-original-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/516px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png"
-      data-chosen="false">
-      <div class="logoname">
-        <img class="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/516px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png"
-          alt="Word" />
-        <h3 class="name">Word</h3>
-      </div>
-      <div class="economie">
-        <p>
-          <span class="savings">0€</span> <br />
-          d'économie
-        </p>
-        <button class="btn btn-alt" onclick="toggleAlternative('word', this)">Choisir l’alternative</button>
-      </div>
+    <div class="title">
+      <h1><span class="h1-1">Au delà des</span><span>licenses payantes,</span><span class="h1-1">le guide :</span></h1>
     </div>
 
-    <div class="software-card" id="card-acrobat" data-original-name="Acrobat Pro"
-      data-original-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Adobe_Acrobat_DC_logo_2020.svg/768px-Adobe_Acrobat_DC_logo_2020.svg.png"
-      data-chosen="false">
-      <div class="logoname">
-        <img class="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Adobe_Acrobat_DC_logo_2020.svg/768px-Adobe_Acrobat_DC_logo_2020.svg.png"
-          alt="Acrobat Pro" />
-        <h3 class="name">Acrobat Pro</h3>
+    <div class="software-container">
+      <div
+        class="software-card"
+        id="card-word"
+        data-original-name="Word"
+        data-original-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/516px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png"
+        data-chosen="false"
+      >
+        <div class="logoname">
+          <img
+            class="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/516px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png"
+            alt="Word"
+          />
+          <h3 class="name">Word</h3>
+        </div>
+        <div class="economie">
+          <p>
+            <span class="savings">0€</span> <br />
+            d'économie
+          </p>
+          <button class="btn btn-alt" onclick="toggleAlternative('word', this)">Choisir l’alternative</button>
+        </div>
       </div>
-      <div class="economie">
-        <p>
-          <span class="savings">0€</span> <br />
-          d'économie
-        </p>
-        <button class="btn btn-alt" onclick="toggleAlternative('acrobat', this)">Choisir l’alternative</button>
+
+      <div
+        class="software-card"
+        id="card-acrobat"
+        data-original-name="Acrobat Pro"
+        data-original-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Adobe_Acrobat_DC_logo_2020.svg/768px-Adobe_Acrobat_DC_logo_2020.svg.png"
+        data-chosen="false"
+      >
+        <div class="logoname">
+          <img
+            class="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Adobe_Acrobat_DC_logo_2020.svg/768px-Adobe_Acrobat_DC_logo_2020.svg.png"
+            alt="Acrobat Pro"
+          />
+          <h3 class="name">Acrobat Pro</h3>
+        </div>
+        <div class="economie">
+          <p>
+            <span class="savings">0€</span> <br />
+            d'économie
+          </p>
+          <button class="btn btn-alt" onclick="toggleAlternative('acrobat', this)">Choisir l’alternative</button>
+        </div>
       </div>
+
+      <div
+        class="software-card"
+        id="card-antivirus"
+        data-original-name="Avast Antivirus"
+        data-original-logo="https://img.icons8.com/color/512/avast--v2.png"
+        data-chosen="false"
+      >
+        <div class="logoname">
+          <img class="logo" src="https://img.icons8.com/color/512/avast--v2.png" alt="Avast Antivirus" />
+          <h3 class="name">Avast Antivirus</h3>
+        </div>
+        <div class="economie">
+          <p>
+            <span class="savings">0€</span> <br />
+            d'économie
+          </p>
+          <button class="btn btn-alt" onclick="toggleAlternative('antivirus', this)">Choisir l’alternative</button>
+        </div>
+      </div>
+
+      <div
+        class="software-card"
+        id="card-photoshop"
+        data-original-name="Photoshop"
+        data-original-logo="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+        data-chosen="false"
+      >
+        <div class="logoname">
+          <img
+            class="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+            alt="Photoshop"
+          />
+          <h3 class="name">Photoshop</h3>
+        </div>
+        <div class="economie">
+          <p>
+            <span class="savings">0€</span> <br />
+            d'économie
+          </p>
+          <button class="btn btn-alt" onclick="toggleAlternative('photoshop', this)">Choisir l’alternative</button>
+        </div>
+      </div>
+
+      <div id="total">Total économies : 0€</div>
+      <button id="resetBtn" onclick="resetTotal()">Réinitialiser</button>
     </div>
 
-    <div class="software-card" id="card-antivirus" data-original-name="Avast Antivirus"
-      data-original-logo="https://img.icons8.com/color/512/avast--v2.png" data-chosen="false">
-      <div class="logoname">
-        <img class="logo" src="https://img.icons8.com/color/512/avast--v2.png" alt="Avast Antivirus" />
-        <h3 class="name">Avast Antivirus</h3>
-      </div>
-      <div class="economie">
-        <p>
-          <span class="savings">0€</span> <br />
-          d'économie
-        </p>
-        <button class="btn btn-alt" onclick="toggleAlternative('antivirus', this)">Choisir l’alternative</button>
-      </div>
-    </div>
+    <script>
+      const alternatives = {
+        word: {
+          altName: 'LibreOffice',
+          altLogo:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/LibreOffice_7.5_Writer_Icon.svg/2048px-LibreOffice_7.5_Writer_Icon.svg.png',
+          savings: 149,
+        },
+        acrobat: {
+          altName: 'Okular',
+          altLogo:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/KDE-graphics-viewer-document.svg/1200px-KDE-graphics-viewer-document.svg.png',
+          savings: 180,
+        },
+        antivirus: {
+          altName: 'Pas besoin sous Linux',
+          altLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAx6camOf_G96Zcs2Zj34Yjmy0ysPd-p0oJQ&s',
+          savings: 60,
+        },
+        photoshop: {
+          altName: 'GIMP',
+          altLogo:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/The_GIMP_icon_-_v3.0.svg/1200px-The_GIMP_icon_-_v3.0.svg.png',
+          savings: 240,
+        },
+        compression: {
+          altName: 'Sites en ligne gratuits',
+          altLogo: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Filetype-zip.svg',
+          savings: 0,
+        },
+      };
 
-    <div class="software-card" id="card-photoshop" data-original-name="Photoshop"
-      data-original-logo="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
-      data-chosen="false">
-      <div class="logoname">
-        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
-          alt="Photoshop" />
-        <h3 class="name">Photoshop</h3>
-      </div>
-      <div class="economie">
-        <p>
-          <span class="savings">0€</span> <br />
-          d'économie
-        </p>
-        <button class="btn btn-alt" onclick="toggleAlternative('photoshop', this)">Choisir l’alternative</button>
-      </div>
-    </div>
+      let totalSavings = 0;
 
-    <div id="total">Total économies : 0€</div>
-    <button id="resetBtn" onclick="resetTotal()">Réinitialiser</button>
-  </div>
-
-  <script>
-    const alternatives = {
-      word: {
-        altName: 'LibreOffice',
-        altLogo:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/LibreOffice_7.5_Writer_Icon.svg/2048px-LibreOffice_7.5_Writer_Icon.svg.png',
-        savings: 149,
-      },
-      acrobat: {
-        altName: 'Okular',
-        altLogo:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/KDE-graphics-viewer-document.svg/1200px-KDE-graphics-viewer-document.svg.png',
-        savings: 180,
-      },
-      antivirus: {
-        altName: 'Pas besoin sous Linux',
-        altLogo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAx6camOf_G96Zcs2Zj34Yjmy0ysPd-p0oJQ&s',
-        savings: 60,
-      },
-      photoshop: {
-        altName: 'GIMP',
-        altLogo:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/The_GIMP_icon_-_v3.0.svg/1200px-The_GIMP_icon_-_v3.0.svg.png',
-        savings: 240,
-      },
-      compression: {
-        altName: 'Sites en ligne gratuits',
-        altLogo: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Filetype-zip.svg',
-        savings: 0,
-      },
-    };
-
-    let totalSavings = 0;
-
-    function toggleAlternative(id, button) {
-      const card = document.getElementById(`card-${id}`);
-      const logo = card.querySelector('.logo');
-      const name = card.querySelector('.name');
-      const savingsEl = card.querySelector('.savings');
-      const chosen = card.getAttribute('data-chosen') === 'true';
-
-      const originalName = card.getAttribute('data-original-name');
-      const originalLogo = card.getAttribute('data-original-logo');
-      const alt = alternatives[id];
-
-      if (!chosen) {
-        // Passer à l'alternative
-        logo.style.opacity = 0;
-        name.style.opacity = 0;
-        setTimeout(() => {
-          logo.src = alt.altLogo;
-          name.textContent = alt.altName;
-          logo.style.opacity = 1;
-          name.style.opacity = 1;
-        }, 300);
-
-        savingsEl.textContent = alt.savings + '€';
-        totalSavings += alt.savings;
-        button.textContent = 'Retour';
-        card.setAttribute('data-chosen', 'true');
-      } else {
-        // Revenir au logiciel original
-        logo.style.opacity = 0;
-        name.style.opacity = 0;
-        setTimeout(() => {
-          logo.src = originalLogo;
-          name.textContent = originalName;
-          logo.style.opacity = 1;
-          name.style.opacity = 1;
-        }, 300);
-
-        totalSavings -= alt.savings;
-        savingsEl.textContent = '0€';
-        button.textContent = 'Opter pour l’alternative';
-        card.setAttribute('data-chosen', 'false');
-      }
-
-      document.getElementById('total').textContent = `Total économies : ${totalSavings}€`;
-    }
-
-    function resetTotal() {
-      totalSavings = 0;
-      const cards = document.querySelectorAll('.software-card');
-      cards.forEach((card) => {
+      function toggleAlternative(id, button) {
+        const card = document.getElementById(`card-${id}`);
         const logo = card.querySelector('.logo');
         const name = card.querySelector('.name');
         const savingsEl = card.querySelector('.savings');
+        const chosen = card.getAttribute('data-chosen') === 'true';
+
         const originalName = card.getAttribute('data-original-name');
         const originalLogo = card.getAttribute('data-original-logo');
-        logo.src = originalLogo;
-        name.textContent = originalName;
-        savingsEl.textContent = '0€';
-        card.setAttribute('data-chosen', 'false');
-        const button = card.querySelector('button');
-        button.textContent = 'Opter pour l’alternative';
+        const alt = alternatives[id];
+
+        if (!chosen) {
+          // Passer à l'alternative
+          logo.style.opacity = 0;
+          name.style.opacity = 0;
+          setTimeout(() => {
+            logo.src = alt.altLogo;
+            name.textContent = alt.altName;
+            logo.style.opacity = 1;
+            name.style.opacity = 1;
+          }, 300);
+
+          savingsEl.textContent = alt.savings + '€';
+          totalSavings += alt.savings;
+          button.textContent = 'Retour';
+          card.setAttribute('data-chosen', 'true');
+        } else {
+          // Revenir au logiciel original
+          logo.style.opacity = 0;
+          name.style.opacity = 0;
+          setTimeout(() => {
+            logo.src = originalLogo;
+            name.textContent = originalName;
+            logo.style.opacity = 1;
+            name.style.opacity = 1;
+          }, 300);
+
+          totalSavings -= alt.savings;
+          savingsEl.textContent = '0€';
+          button.textContent = 'Opter pour l’alternative';
+          card.setAttribute('data-chosen', 'false');
+        }
+
+        document.getElementById('total').textContent = `Total économies : ${totalSavings}€`;
+      }
+
+      function resetTotal() {
+        totalSavings = 0;
+        const cards = document.querySelectorAll('.software-card');
+        cards.forEach((card) => {
+          const logo = card.querySelector('.logo');
+          const name = card.querySelector('.name');
+          const savingsEl = card.querySelector('.savings');
+          const originalName = card.getAttribute('data-original-name');
+          const originalLogo = card.getAttribute('data-original-logo');
+          logo.src = originalLogo;
+          name.textContent = originalName;
+          savingsEl.textContent = '0€';
+          card.setAttribute('data-chosen', 'false');
+          const button = card.querySelector('button');
+          button.textContent = 'Opter pour l’alternative';
+        });
+
+        document.getElementById('total').textContent = `Total économies : 0€`;
+      }
+    </script>
+    <n-footer title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
+
+    <script type="module" src="./components/index.js"></script>
+    <script type="module" src="./components/camera.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const el = document.querySelector('.menu-jeu');
+        console.log('menu-info:', el);
+        if (el) el.style.borderBottom = '2px solid black';
       });
-
-      document.getElementById('total').textContent = `Total économies : 0€`;
-    }
-  </script>
-  <n-footer title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
-
-  <script type="module" src="./components/index.js"></script>
-  <script type="module" src="./components/camera.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const el = document.querySelector('.menu-jeu');
-      console.log('menu-info:', el);
-      if (el) el.style.borderBottom = '2px solid black';
-    });
-
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
