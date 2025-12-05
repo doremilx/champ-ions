@@ -19,9 +19,10 @@ class HeaderComponent extends HTMLElement {
           <img src="${titleSrc}" alt="" width="48px"/>
           <span class="sr-only">${titleAlt}</span>
         </a>
-        <a href="index.html"> Apprendre </a>
-        <a href="jeu.html"> Jouer </a>
-        
+        <div class='right'>
+        <a class='menu-info' href="index.html"> Apprendre </a>
+        <a class='menu-jeu' href="jeu.html"> Jouer </a>
+        </div>
       </header>
     `;
   }

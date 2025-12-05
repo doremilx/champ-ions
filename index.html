@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-  href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
-  rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -26,24 +26,31 @@
     }
   </script>
   <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
-  
+
   <!-- Titre principal -->
   <div class="welcome" id="welcome">
     <div id="viewer"></div>
     <h1>Entre dans <span class="yellow"> l’ avenir</span> du <span class="yellow">numérique</span></h1>
   </div>
   <p class="texte-intro">
-      La démarche NIRD accompagne les établissements scolaires vers un Numérique Inclusif Responsable et Durable, en
-      s’appuyant notamment sur l’adoption progressive de Linux et de logiciels libres. Nous voulons que les
-      institutions apprennent à maîtriser l’outil numérique plutôt que de le subir..
-    </p>
+    La démarche NIRD accompagne les établissements scolaires vers un Numérique Inclusif Responsable et Durable, en
+    s’appuyant notamment sur l’adoption progressive de Linux et de logiciels libres. Nous voulons que les
+    institutions apprennent à maîtriser l’outil numérique plutôt que de le subir..
+  </p>
+   <div class="texte-special">
+        <h2>L'Outil numérique : <br />un enjeu</h2>
+        <div class="special-flex">
+          <h2 class="gros-special">Eco</h2>
+          <h2 class="petit-special">logique & <br />nomique</h2>
+        </div>
+      </div>
   <div class="infos-container">
-    
+
     <div class="info">
       <h2>74 millions d’€</h2>
       <p>Montant signé par l’Éducation nationale (18 mars 2025) pour des solutions et services Microsoft.</p>
     </div>
-    
+
     <div class="info">
       <h2>400 millions d'appareils</h2>
       <p>
@@ -51,22 +58,22 @@
         2025).
       </p>
     </div>
-    
+
     <div class="info">
       <h2>+7ans</h2>
       <p>de durée de vie moyenne pour un appareil lorsqu’il fonctionne sous Linux.</p>
     </div>
-    
+
     <div class="info">
       <h2>2 millions d’€ économisés</h2>
       <p>en 6 ans, grâce au développement interne et aux logiciels libres (Commune d’Échirolles).</p>
     </div>
-    
+
     <div class="info">
       <h2>8 millions d’€ d’économies</h2>
       <p>réalisés par la Gendarmerie nationale</p>
     </div>
-    
+
     <div class="info">
       <h2>et pourtant …75 %</h2>
       <div class="progress-container">
@@ -74,24 +81,43 @@
       </div>
       <p>des ordinateurs dans le monde tournent encore sous Windows.</p>
     </div>
-    
-    
-    
+
+
+
     <img src="img/logoNIRD.svg" alt="Logo NIRD suiveur" id="follower-logo" />
-    
+
     <svg id="path-svg" viewBox="0 0 100 1000" preserveAspectRatio="xMinYMin meet">
       <path id="zig-zag-line"
-      d="M 50 0 L 10 120 L 90 240 L 30 360 L 70 480 L 10 600 L 90 720 L 50 840 L 10 960 L 50 1000" />
+        d="M 50 0 L 10 120 L 90 240 L 30 360 L 70 480 L 10 600 L 90 720 L 50 840 L 10 960 L 50 1000" />
     </svg>
+
+    <div class="cta">
+      <h2 class="ctatitle">Plonge dans le futur du numérique</h2>
+      <a class="btn" href="jeu.html">Je me lance !</a>
+    </div>
   </div>
-</div>
-<n-footer title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script type="module" src="./components/index.js"></script>
-<script type="module" src="./components/camera.js"></script>
+
+
+  </div>
+
+
+  <n-footer title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script type="module" src="./components/index.js"></script>
+  <script type="module" src="./components/camera.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.menu-info');
+      console.log('menu-info:', el);
+      if (el) el.style.borderBottom = '2px solid white';
+    });
+
+  </script>
+
 </body>
 
 </html>
