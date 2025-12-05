@@ -104,17 +104,22 @@ body {
 
 #follower-logo {
   position: absolute;
-  width: 40px; /* Taille du logo */
-  height: 40px;
+  width: 70px; /* Taille du logo */
+  height: 70px;
   z-index: 2; /* Au-dessus du fil */
   /* Nous utilisons la propriété 'transform' de GSAP, mais il faut une base absolute */
 }
 
 .infos-container > p {
-  width: 600px;
-  max-width: 90%;
-  margin-bottom: 30px;
+  min-width: 600px;
+  max-width: 75%;
+  margin-bottom: 150px;
   color: white;
+  font-size: 1.3em;
+  border: 2px solid black;
+  border-radius: 40px;
+  padding: 20px;
+  background-color: #ffffff17;
 }
 
 .info {
@@ -168,6 +173,14 @@ h2 {
 
     margin-left: auto;
     margin-right: 150px;
+  }
+}
+@media screen and (max-width: 900px) {
+  #path-svg {
+    z-index: -100;
+  }
+  #follower-logo {
+    z-index: -98; /* Au-dessus du fil */
   }
 }
 
