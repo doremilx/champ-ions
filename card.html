@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="img/LogoNIRD.svg" type="image/x-icon" />
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <title>Carte</title>
   </head>
@@ -20,11 +21,23 @@
       box-sizing: border-box;
     }
 
+    /* --- CENTRAGE GLOBAL --- */
     body {
       background: linear-gradient(135deg, #030023 0%, #0025ba 50%, #6f4bff 100%);
       color: #ffffff;
+      font-family: Raleway, sans-serif;
+      text-align: center; /* centre tout ce qui n'a pas de display override */
     }
 
+    h1 {
+      font-family: 'Londrina Solid', sans-serif;
+      font-size: 3rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 0 10px #6f4bff, 0 0 20px #0025ba;
+    }
     /* --- FORMULAIRE AMÉLIORÉ --- */
 
     #rewardForm {
@@ -96,6 +109,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin: 20px auto;
     }
     #rewardCard h1 {
       margin-top: 10px;
@@ -156,6 +170,7 @@
     }
   </style>
   <body>
+    <h1>Récupère ta carte !</h1>
     <form id="rewardForm">
       <label for="firstName">Prénom :</label>
       <input type="text" id="firstName" name="firstName" required /><br /><br />
@@ -168,8 +183,6 @@
 
       <button type="submit">Générer ma carte</button>
     </form>
-
-    <hr />
 
     <div id="rewardCard">
       <div class="cadre">
