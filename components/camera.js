@@ -5,8 +5,8 @@ const box = document.getElementById("viewer");
 const divBox = document.getElementById("welcome");
 
 // Force une taille 300x300
-box.style.width = "300px";
-box.style.height = "300px";
+box.style.width = "370px";
+box.style.height = "370px";
 
 // Renderer
 const R = new THREE.WebGLRenderer({
@@ -21,9 +21,9 @@ const S = new THREE.Scene();
 const C = new THREE.PerspectiveCamera(80, 1, 0.1, 1000);
 
 // Lumières
-S.add(new THREE.AmbientLight(0xffffff, 0.8));
-const L = new THREE.DirectionalLight(0xffffff, 1);
-L.position.set(3, 3, 3);
+S.add(new THREE.AmbientLight(0xffffff, 17));
+const L = new THREE.DirectionalLight(0xFF5500, 1);
+L.position.set(0, 0, 2);
 S.add(L);
 
 // Groupe racine
@@ -38,7 +38,7 @@ new GLTFLoader().load("./img/logo3D.glb", g => {
     G.add(M);
 
     // Orientation de base
-    M.rotation.x = Math.PI / 2;
+    M.rotation.x = Math.PI * 2.01;
 
     // --- Calcul de boîte APRES rotation ---
     const boxRot = new THREE.Box3().setFromObject(M);
@@ -54,7 +54,7 @@ new GLTFLoader().load("./img/logo3D.glb", g => {
     const maxDim = Math.max(size.x, size.y, size.z)/1.7;
     const distance = maxDim * 1.4; // marge légère
     C.position.set(0, 0, distance);
-
+    console.log(distance);
     C.lookAt(0, 0, 0);
 });
 
@@ -64,8 +64,8 @@ const maxY = 0.6, maxX = 0.5;
 
 // Mouse move
 divBox.onmousemove = e => {
-    mx = (e.offsetX / divBox.clientWidth - 0.5) * 2;
-    my = (e.offsetY / divBox.clientHeight - 0.5) * 2;
+    mx = (e.pageX / divBox.clientWidth - 0) * 2;
+    my = (e.pageY / divBox.clientHeight - 0) * 2;
 };
 
 // Retour de face
