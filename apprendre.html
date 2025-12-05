@@ -15,17 +15,26 @@
 </head>
 <body>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         h3{
             font-family: 'Titan One';
             font-weight: normal;
+            font-size: 2rem;
         }
+
         h3 span{
-            background-color: #f2d160;
+            display: inline-block;
+            width: 60px;
+            height: 50px;
+            background: #f2d160;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            text-align: center;
+            line-height: 50px;
+            margin-right: 10px;
             color: black;
-            padding: 5px 10px;
-            border-radius: 50px;
-            aspect-ratio: 1/1;
-            margin-right: 8px;
+            font-size: 1.5rem;
         }
         body{
             background-color: #977dff;
@@ -34,15 +43,62 @@
         }
         .step div {
             display: flex;
+            align-items: center;
         }
-        .step-1 button {
+        button span {
+            margin-left: 80px;
+        }
+
+        button {
             border: solid 2px;
             font-size: 1.1rem;
             background: #e0d1f1;
-            padding: 5px 20px;
+            padding: 10px 20px;
             border-radius: 10px;
             font-family: 'Raleway', sans-serif;
             font-weight: 400;
+        }
+        .step-2 button {
+            border-radius: 100px;
+        }
+        .step-3 button:not(.power) {
+            background: #f2d160;
+            border-radius: 0 50px 50px 0;
+            padding-right: 50px;
+            padding-left: 30px;
+        }
+        .step-3 .power {
+            background: #f2d160;
+            border-radius: 50px;
+            padding: 10px;
+            margin-right: -20px;
+            z-index: 2;
+        }
+        .step-3 .power img {
+            width: 50px;
+        }
+        .step-4 div {
+            gap: 3px;
+            max-width: 400px;
+        }
+        .step-4 button, .step-5 button {
+            border-radius: 5px;
+            flex: 1;
+            text-align: left;
+        }
+        .step-4 button:nth-child(2) {
+            background: #f2d160;
+        }
+        .step-5 div {
+            flex-direction: column;
+            gap: 3px;
+            max-width: 400px;
+        }
+        .step-5 div button {
+            width: 100%;
+        }
+        .step-5 div button:nth-child(2) {
+            background: #f2d160;
         }
     </style>
     <main>
@@ -52,7 +108,7 @@
             <div class="step-1 step">
                 <h3><span>1</span>Téléchargement</h3>
                 <p>Clique sur le bouton pour télécharger la version de Linux NIRD.</p>
-                <button>Linux NIRD ↓</button>
+                <button>Linux NIRD <span>↓</span></button>
             </div>
             <div class="step-2 step">
                 <h3><span>2</span>Création de la clé</h3>
@@ -62,7 +118,7 @@
             <div class="step-3 step">
                 <h3><span>3</span>Redémarrage</h3>
                 <p>Garde la clé USB insérée et redémarre ton appareil.</p>
-                <button>Rédémarrer</button>
+                <div><button class="power"><img src="img/icons/power.png" alt=""></button><button>Rédémarrer</button></div>
             </div>
             <div class="step-4 step">
                 <h3><span>4</span>Ouvrir le menu Boot</h3>
@@ -76,8 +132,10 @@
             <div class="step-5 step">
                 <h3><span>5</span>Utilisation de la clé</h3>
                 <p>Dans le menu choisi de démarrer avec l'option USB.</p>
-                <button>Windows Boot</button>
-                <button>> USB HDD [Linux NIRD]</button>
+                <div>
+                    <button>Windows Boot</button>
+                    <button>> USB HDD [Linux NIRD]</button>
+                </div>
             </div>
         </section>
     </main>
