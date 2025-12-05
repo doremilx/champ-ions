@@ -8,53 +8,174 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap" rel="stylesheet" />
 <style>
-body{
+* {
+    box-sizing: border-box;
+}
+
+body {
     background-color: #977dff;
     color: white;
     font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 20px;
 }
-h3{
+
+h3 {
     font-family: 'Titan One';
     font-weight: normal;
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
 }
-h3 span{
-    background-color: #f2d160;
+
+h3 span {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #f2d160;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    text-align: center;
+    line-height: 50px;
+    margin-right: 10px;
     color: black;
-    padding: 5px 10px;
-    border-radius: 50px;
-    aspect-ratio: 1/1;
-    margin-right: 8px;
+    font-size: 1.2rem;
 }
-.step { 
-    padding: 15px; 
-    border-radius: 10px; 
-    margin-bottom: 15px; 
-    background: #8c73ff; 
-    transition: 0.3s; 
-}
-.step.locked { 
-    opacity: 0.5; 
-    pointer-events: none; 
-}
-.step.done { 
-    border: 2px solid #1d72b8; 
-    background: #b7a8ff; 
-}
-.step.active { 
-    border: 2px solid #2ea44f; 
-}
-.step div { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-.step button {
-    border: solid 2px;
-    font-size: 1.1rem;
-    background: #e0d1f1;
-    padding: 5px 20px;
+
+.step {
+    padding: 12px;
     border-radius: 10px;
+    margin-bottom: 15px;
+    background: #8c73ff;
+    transition: 0.3s;
+}
+
+.step.locked {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.step.done {
+    border: 2px solid #1d72b8;
+    background: #b7a8ff;
+}
+
+.step.active {
+    border: 2px solid #2ea44f;
+}
+
+.step div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.step button {
+    border: solid 2px #ccc;
+    font-size: 1rem;
+    background: #e0d1f1;
+    padding: 6px 14px;
+    border-radius: 8px;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     cursor: pointer;
+    transition: 0.2s;
 }
-canvas { border:1px solid #ccc; display:block; margin:15px 0; background:#222; }
+
+.step button:hover {
+    background: #d6c6f9;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    display: block;
+    margin: 15px 0;
+    background: #222;
+}
+
+*,
+    *::before,
+    * ::after {
+      box-sizing: border-box;
+    }
+
+    #rewardCard {
+      width: 400px;
+      height: 250px;
+      background: linear-gradient(
+        180deg,
+        #738dff 0%,
+        #e9e8f2 50%,
+        #ffdbf6 100%
+      );
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      font-family: Raleway, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #rewardCard h1 {
+      margin-top: 10px;
+      font-size: 2em;
+    }
+    #cardName {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    #cardPhoto {
+      width: auto;
+      height: 107px;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-right: 10px;
+    }
+
+    .cadre {
+      border: 2px solid rgb(0, 0, 0);
+      width: 370px;
+      height: 250px;
+      padding: 10px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .entetecard {
+      display: flex;
+      border-bottom: 2px solid black;
+      justify-content: space-between;
+    }
+
+    .right {
+      text-align: left;
+      margin-top: 10px;
+      width: 80%;
+      margin-right: 20px;
+    }
+
+    .infocard {
+      display: flex;
+      margin: 10px;
+    }
+
+    .cadre p {
+      margin: 5px;
+    }
+
+    .textRecompense {
+      font-size: 0.8em;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .right p {
+      border-bottom: 2px solid black;
+      padding-bottom: 5px;
+      width: 100%;
+    }
+
 </style>
 </head>
 <body>
@@ -63,9 +184,40 @@ canvas { border:1px solid #ccc; display:block; margin:15px 0; background:#222; }
         <h2>Installation de Linux</h2>
         <div id="steps-container"></div>
     </section>
+    <form id="rewardForm" style="display:none">
+  <label for="firstName">Prénom :</label>
+  <input type="text" id="firstName" name="firstName" required /><br /><br />
+
+  <label for="lastName">Nom :</label>
+  <input type="text" id="lastName" name="lastName" required /><br /><br />
+
+  <label for="photo">Photo :</label>
+  <input type="file" id="photo" name="photo" accept="image/*" /><br /><br />
+
+  <button type="submit">Générer ma carte</button>
+</form>
 </main>
 
 <script>
+
+function validateStep(i){
+    state[i].status="done";
+    if(state[i+1]) {
+        state[i+1].status="active";
+    }
+    canvas.style.display="none"; // masquer canvas après succès
+    renderSteps();
+
+    // Si c'est la dernière étape
+    if(i === state.length - 1){
+        // Afficher le formulaire
+        const rewardForm = document.getElementById("rewardForm");
+        rewardForm.style.display = "block";
+
+        // Scroll automatique vers le formulaire (optionnel)
+        rewardForm.scrollIntoView({ behavior: "smooth" });
+    }
+}
 const stepsData = [
     { 
         title: "Téléchargement",
@@ -183,12 +335,12 @@ function startMiniGame(step, onSuccess){
             }
             canvas._anim = requestAnimationFrame(loop);
         }
-        function clickHandler(){ progress+=50; if(progress>99) progress=100; }
+        function clickHandler(){ progress+=5; if(progress>99) progress=100; }
         canvas.addEventListener("click", clickHandler);
         canvas._clickHandler = clickHandler;
         loop();
     } else if(step.type==="dodge"){
-        let player={x:180,y:170,w:40,h:20}, obstacles=[], frames=0, survivalTime=1, timer=1;
+        let player={x:180,y:170,w:40,h:20}, obstacles=[], frames=0, survivalTime=10, timer=10;
         let keys={ArrowLeft:false,ArrowRight:false};
         function keyDownHandler(e){ if(keys.hasOwnProperty(e.key)) keys[e.key]=true; }
         function keyUpHandler(e){ if(keys.hasOwnProperty(e.key)) keys[e.key]=false; }
@@ -433,66 +585,90 @@ else if(step.type === "keys") {
     draw();
 }
 else if(step.type === "drag-button") {
+    // Mini-jeu : glisser le bouton jusqu'à la cible
     canvas.style.display = "block";
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    // Paramètres
-    const target = {x: 300, y: 80, w: 60, h: 40};
+    const btn = { x: 50, y: 150, w: 80, h: 30 };
+    const target = { x: 300, y: 150, w: 80, h: 30 };
     let dragging = false;
-    const button = {x: 50, y: 80, w: 60, h: 40};
+    let offsetX = 0, offsetY = 0;
 
     function draw() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        // Zone cible
+        // cible
         ctx.fillStyle = "#2ea44f";
         ctx.fillRect(target.x, target.y, target.w, target.h);
         ctx.strokeStyle = "#fff";
         ctx.strokeRect(target.x, target.y, target.w, target.h);
         ctx.font = "16px Arial";
         ctx.fillStyle = "#fff";
-        ctx.fillText("Dépose ici", target.x, target.y - 5);
+        ctx.fillText("Dépose ici", target.x+5, target.y+20);
 
-        // Bouton à déplacer
+        // bouton draggable
         ctx.fillStyle = "#f2d160";
-        ctx.fillRect(button.x, button.y, button.w, button.h);
+        ctx.fillRect(btn.x, btn.y, btn.w, btn.h);
         ctx.strokeStyle = "#000";
-        ctx.strokeRect(button.x, button.y, button.w, button.h);
+        ctx.strokeRect(btn.x, btn.y, btn.w, btn.h);
         ctx.fillStyle = "#000";
-        ctx.font = "16px Arial";
-        ctx.fillText("Glisser", button.x + 5, button.y + 25);
+        ctx.fillText("Glisser", btn.x+10, btn.y+20);
     }
 
     function mouseDown(e) {
         const rect = canvas.getBoundingClientRect();
         const mx = e.clientX - rect.left;
         const my = e.clientY - rect.top;
-        if(mx > button.x && mx < button.x + button.w && my > button.y && my < button.y + button.h){
+        if(mx > btn.x && mx < btn.x+btn.w && my > btn.y && my < btn.y+btn.h){
             dragging = true;
+            offsetX = mx - btn.x;
+            offsetY = my - btn.y;
         }
     }
 
     function mouseMove(e) {
-        if(!dragging) return;
-        const rect = canvas.getBoundingClientRect();
-        button.x = e.clientX - rect.left - button.w/2;
-        button.y = e.clientY - rect.top - button.h/2;
-        draw();
+        if(dragging){
+            const rect = canvas.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+            btn.x = mx - offsetX;
+            btn.y = my - offsetY;
+            draw();
+        }
     }
 
     function mouseUp() {
-        dragging = false;
-        // Vérifier si bouton dans la zone cible
-        if(button.x + button.w/2 > target.x && button.x + button.w/2 < target.x + target.w &&
-           button.y + button.h/2 > target.y && button.y + button.h/2 < target.y + target.h){
-               canvas.removeEventListener("mousedown", mouseDown);
-               canvas.removeEventListener("mousemove", mouseMove);
-               canvas.removeEventListener("mouseup", mouseUp);
-               ctx.clearRect(0,0,canvas.width,canvas.height);
-               ctx.fillStyle = "#0f0";
-               ctx.font = "24px Arial";
-               ctx.fillText("Succès !", 150, 100);
-               setTimeout(()=>{canvas.style.display="none"; onSuccess();}, 1000);
+        if(dragging){
+            dragging = false;
+            // Vérifier si bouton est sur la cible
+            if(
+                btn.x + btn.w/2 > target.x &&
+                btn.x + btn.w/2 < target.x + target.w &&
+                btn.y + btn.h/2 > target.y &&
+                btn.y + btn.h/2 < target.y + target.h
+            ){
+                // Succès
+                canvas.removeEventListener("mousedown", mouseDown);
+                canvas.removeEventListener("mousemove", mouseMove);
+                canvas.removeEventListener("mouseup", mouseUp);
+
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.font = "24px Arial";
+                ctx.fillStyle = "#0f0";
+                ctx.fillText("Bravo !", 150, 100);
+
+                setTimeout(()=>{
+                    canvas.style.display="none";
+                    validateStep(step.index);
+
+                    // Afficher le formulaire
+                    const rewardForm = document.getElementById("rewardForm");
+                    rewardForm.style.display = "block";
+                    rewardForm.scrollIntoView({behavior:"smooth"});
+                }, 1000);
+            } else {
+                draw(); // remettre bouton à sa position si pas sur cible
+            }
         }
     }
 
