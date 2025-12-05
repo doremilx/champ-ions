@@ -6,12 +6,15 @@
 <title>Installation de Linux Interactive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="./styles/reset.css">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap" rel="stylesheet" />
 <style>
 * {
     box-sizing: border-box;
 }
-
+h2{
+    margin-top: 80px;
+}
 body {
     background-color: #977dff;
     color: white;
@@ -19,8 +22,12 @@ body {
     margin: 0;
     padding: 20px;
 }
+footer{
+    border-radius: 25px;
+}
 
 h3 {
+    
     font-family: 'Titan One';
     font-weight: normal;
     font-size: 1.8rem;
@@ -92,157 +99,45 @@ canvas {
     background: #222;
 }
 
-*,
-    *::before,
-    * ::after {
-      box-sizing: border-box;
-    }
-
-    #rewardCard {
-      width: 400px;
-      height: 250px;
-      background: linear-gradient(
-        180deg,
-        #738dff 0%,
-        #e9e8f2 50%,
-        #ffdbf6 100%
-      );
-      color: rgb(0, 0, 0);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      font-family: Raleway, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    #rewardCard h1 {
-      margin-top: 10px;
-      font-size: 2em;
-    }
-    #cardName {
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-    #cardPhoto {
-      width: auto;
-      height: 107px;
-      object-fit: cover;
-      border: 3px solid white;
-      margin-right: 10px;
-    }
-
-    .cadre {
-      border: 2px solid rgb(0, 0, 0);
-      width: 370px;
-      height: 250px;
-      padding: 10px;
-      border-radius: 15px;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    .entetecard {
-      display: flex;
-      border-bottom: 2px solid black;
-      justify-content: space-between;
-    }
-
-    .right {
-      text-align: left;
-      margin-top: 10px;
-      width: 80%;
-      margin-right: 20px;
-    }
-
-    .infocard {
-      display: flex;
-      margin: 10px;
-    }
-
-    .cadre p {
-      margin: 5px;
-    }
-
-    .textRecompense {
-      font-size: 0.8em;
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .right p {
-      border-bottom: 2px solid black;
-      padding-bottom: 5px;
-      width: 100%;
-    }
 
 </style>
 </head>
 <body>
+    <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 <main>
     <section>
         <h2>Installation de Linux</h2>
         <div id="steps-container"></div>
     </section>
-    <form id="rewardForm" style="display:none">
-  <label for="firstName">Prénom :</label>
-  <input type="text" id="firstName" name="firstName" required /><br /><br />
-
-  <label for="lastName">Nom :</label>
-  <input type="text" id="lastName" name="lastName" required /><br /><br />
-
-  <label for="photo">Photo :</label>
-  <input type="file" id="photo" name="photo" accept="image/*" /><br /><br />
-
-  <button type="submit">Générer ma carte</button>
-</form>
 </main>
-
+<n-footer title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
+  <script type="module" src="./components/index.js"></script>
 <script>
-
-function validateStep(i){
-    state[i].status="done";
-    if(state[i+1]) {
-        state[i+1].status="active";
-    }
-    canvas.style.display="none"; // masquer canvas après succès
-    renderSteps();
-
-    // Si c'est la dernière étape
-    if(i === state.length - 1){
-        // Afficher le formulaire
-        const rewardForm = document.getElementById("rewardForm");
-        rewardForm.style.display = "block";
-
-        // Scroll automatique vers le formulaire (optionnel)
-        rewardForm.scrollIntoView({ behavior: "smooth" });
-    }
-}
 const stepsData = [
     { 
         title: "Téléchargement",
-        description: "Clique sur le bouton pour télécharger la version de Linux NIRD.",
+        description: "Clique sur le bouton pour télécharger la version de Linux NIRD. -> Cliquez sur la barre pour compléter le téléchargement !",
         type: "click-bar",
         buttons: ["Linux NIRD ↓"]
     },
 
     { 
         title: "Création de la clé",
-        description: "Insère une clé USB vierge sur laquelle on grave le fichier téléchargé.",
+        description: "Insère une clé USB vierge sur laquelle on grave le fichier téléchargé. -> Esquivez les projectiles et survivez le temps imparti !",
         type: "dodge",
         buttons: ["→ Graver avec Ventoy"]
     },
 
     { 
         title: "Redémarrage",
-        description: "Garde la clé USB insérée et redémarre ton appareil.",
+        description: "Garde la clé USB insérée et redémarre ton appareil. -> Attrapez un maximum de balles pour arriver à l'étape suivante !",
         type: "pong",
         buttons: ["Rédémarrer"]
     },
 
     { 
         title: "Ouvrir le menu Boot",
-        description: "Dès le redémarrage, appuie sur la touche (souvent F12) pour ouvrir le menu Boot de ton appareil.",
+        description: "Dès le redémarrage, appuie sur la touche (souvent F12) pour ouvrir le menu Boot de ton appareil. -> Tapez la commande ci-dessous en ouvrant le terminal via n'importe lequel des boutons.",
         type: "keys", // ← JEU N°4 : successions de touches
         // Les touches que l’utilisateur devra appuyer successivement :
         buttons: ["s", "u", "d", "o", " ", "a", "p", "t", " ", "u", "p", "d", "a", "t", "e"]
@@ -250,7 +145,7 @@ const stepsData = [
 
     { 
         title: "Utilisation de la clé",
-        description: "Dans le menu de Boot, sélectionnez votre clef.",
+        description: "Dans le menu de Boot, sélectionnez votre clef. -> Associez les deux éléments !",
         type: "drag-button",
         buttons: ["> USB HDD [Linux NIRD]"]
     },
@@ -354,11 +249,11 @@ function startMiniGame(step, onSuccess){
         }
         function update(delta){
             frames++;
-            if(keys.ArrowLeft) player.x-=4;
-            if(keys.ArrowRight) player.x+=4;
+            if(keys.ArrowLeft) player.x-=8;
+            if(keys.ArrowRight) player.x+=8;
             if(player.x<0) player.x=0; if(player.x>canvas.width-player.w) player.x=canvas.width-player.w;
             if(frames%50===0) obstacles.push({x:Math.random()*360,y:-20,w:20,h:20});
-            obstacles.forEach(o=>o.y+=2);
+            obstacles.forEach(o=>o.y+=5);
             obstacles = obstacles.filter(o=>o.y<canvas.height);
             if(obstacles.some(o=>o.x<player.x+player.w && o.x+o.w>player.x && o.y<player.y+player.h && o.y+o.h>player.y)){
                 timer = survivalTime;
@@ -395,7 +290,7 @@ function startMiniGame(step, onSuccess){
             x: Math.random() * (canvas.width - 20) + 10,
             y: 0,
             r: 8,
-            dy: 1.5 // balle lente
+            dy: 4 // balle lente
         };
     }
 
@@ -585,90 +480,89 @@ else if(step.type === "keys") {
     draw();
 }
 else if(step.type === "drag-button") {
-    // Mini-jeu : glisser le bouton jusqu'à la cible
     canvas.style.display = "block";
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    const btn = { x: 50, y: 150, w: 80, h: 30 };
-    const target = { x: 300, y: 150, w: 80, h: 30 };
+    // Paramètres
+    const target = {x: 300, y: 80, w: 60, h: 40};
     let dragging = false;
-    let offsetX = 0, offsetY = 0;
+    const button = {x: 50, y: 80, w: 60, h: 40};
 
     function draw() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        // cible
+        // Zone cible
         ctx.fillStyle = "#2ea44f";
         ctx.fillRect(target.x, target.y, target.w, target.h);
         ctx.strokeStyle = "#fff";
         ctx.strokeRect(target.x, target.y, target.w, target.h);
         ctx.font = "16px Arial";
         ctx.fillStyle = "#fff";
-        ctx.fillText("Dépose ici", target.x+5, target.y+20);
+        ctx.fillText("Dépose ici", target.x, target.y - 5);
 
-        // bouton draggable
+        // Bouton à déplacer
         ctx.fillStyle = "#f2d160";
-        ctx.fillRect(btn.x, btn.y, btn.w, btn.h);
+        ctx.fillRect(button.x, button.y, button.w, button.h);
         ctx.strokeStyle = "#000";
-        ctx.strokeRect(btn.x, btn.y, btn.w, btn.h);
+        ctx.strokeRect(button.x, button.y, button.w, button.h);
         ctx.fillStyle = "#000";
-        ctx.fillText("Glisser", btn.x+10, btn.y+20);
+        ctx.font = "16px Arial";
+        ctx.fillText("Glisser", button.x + 5, button.y + 25);
     }
 
     function mouseDown(e) {
         const rect = canvas.getBoundingClientRect();
         const mx = e.clientX - rect.left;
         const my = e.clientY - rect.top;
-        if(mx > btn.x && mx < btn.x+btn.w && my > btn.y && my < btn.y+btn.h){
+        if(mx > button.x && mx < button.x + button.w && my > button.y && my < button.y + button.h){
             dragging = true;
-            offsetX = mx - btn.x;
-            offsetY = my - btn.y;
         }
     }
 
     function mouseMove(e) {
-        if(dragging){
-            const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left;
-            const my = e.clientY - rect.top;
-            btn.x = mx - offsetX;
-            btn.y = my - offsetY;
-            draw();
-        }
+        if(!dragging) return;
+        const rect = canvas.getBoundingClientRect();
+        button.x = e.clientX - rect.left - button.w/2;
+        button.y = e.clientY - rect.top - button.h/2;
+        draw();
     }
 
     function mouseUp() {
-        if(dragging){
-            dragging = false;
-            // Vérifier si bouton est sur la cible
-            if(
-                btn.x + btn.w/2 > target.x &&
-                btn.x + btn.w/2 < target.x + target.w &&
-                btn.y + btn.h/2 > target.y &&
-                btn.y + btn.h/2 < target.y + target.h
-            ){
-                // Succès
-                canvas.removeEventListener("mousedown", mouseDown);
-                canvas.removeEventListener("mousemove", mouseMove);
-                canvas.removeEventListener("mouseup", mouseUp);
+        dragging = false;
 
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                ctx.font = "24px Arial";
-                ctx.fillStyle = "#0f0";
-                ctx.fillText("Bravo !", 150, 100);
+        // Vérifier si bouton dans la zone cible
+        if(button.x + button.w/2 > target.x && button.x + button.w/2 < target.x + target.w &&
+           button.y + button.h/2 > target.y && button.y + button.h/2 < target.y + target.h){
 
-                setTimeout(()=>{
-                    canvas.style.display="none";
-                    validateStep(step.index);
+               canvas.removeEventListener("mousedown", mouseDown);
+               canvas.removeEventListener("mousemove", mouseMove);
+               canvas.removeEventListener("mouseup", mouseUp);
 
-                    // Afficher le formulaire
-                    const rewardForm = document.getElementById("rewardForm");
-                    rewardForm.style.display = "block";
-                    rewardForm.scrollIntoView({behavior:"smooth"});
-                }, 1000);
-            } else {
-                draw(); // remettre bouton à sa position si pas sur cible
-            }
+               ctx.clearRect(0,0,canvas.width,canvas.height);
+               ctx.fillStyle = "#0f0";
+               ctx.font = "24px Arial";
+               ctx.fillText("Succès !", 150, 100);
+
+               setTimeout(() => {
+                   canvas.style.display = "none";
+
+                   // Valider l'étape avant d'ajouter le bouton
+                   validateStep(step.index);
+
+                   // Créer le bouton pour accéder à la carte
+                   const cardBtn = document.createElement("button");
+                   cardBtn.textContent = "Accéder à ma carte";
+                   cardBtn.style.marginTop = "20px";
+                   cardBtn.style.padding = "10px 20px";
+                   cardBtn.style.fontSize = "1.1rem";
+                   cardBtn.style.borderRadius = "10px";
+                   cardBtn.style.cursor = "pointer";
+                   cardBtn.onclick = () => {
+                       window.location.href = "card.html";
+                   };
+
+                   container.appendChild(cardBtn);
+               }, 1000);
         }
     }
 
@@ -678,7 +572,6 @@ else if(step.type === "drag-button") {
 
     draw();
 }
-
 }
 
 renderSteps();
