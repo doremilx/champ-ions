@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<<<<<<< HEAD
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,10 +13,6 @@
     rel="stylesheet" />
   <link rel="shortcut icon" href="img/LogoNIRD.svg" type="image/x-icon">
 </head>
-=======
-  <body>
-    <n-header title-src="img/LogoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
->>>>>>> 68469d99180eb49536d8f40043021a6e1f223e33
 
 <body>
   <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
@@ -97,6 +92,7 @@
 
     <div id="total">Total économies : 0€</div>
     <button id="resetBtn" onclick="resetTotal()">Réinitialiser</button>
+    <a class='nextstep' href="apprendre.html">Étape suivante</a>
   </div>
 
   <script>
@@ -188,82 +184,12 @@
         const savingsEl = card.querySelector('.savings');
         const originalName = card.getAttribute('data-original-name');
         const originalLogo = card.getAttribute('data-original-logo');
-<<<<<<< HEAD
         logo.src = originalLogo;
         name.textContent = originalName;
         savingsEl.textContent = '0€';
         card.setAttribute('data-chosen', 'false');
         const button = card.querySelector('button');
         button.textContent = 'Opter pour l’alternative';
-=======
-        const alt = alternatives[id];
-
-        if (!chosen) {
-          // Passer à l'alternative
-          logo.style.opacity = 0;
-          name.style.opacity = 0;
-          setTimeout(() => {
-            logo.src = alt.altLogo;
-            name.textContent = alt.altName;
-            logo.style.opacity = 1;
-            name.style.opacity = 1;
-          }, 300);
-
-          savingsEl.textContent = alt.savings + '€';
-          totalSavings += alt.savings;
-          button.textContent = 'Retour';
-          card.setAttribute('data-chosen', 'true');
-        } else {
-          // Revenir au logiciel original
-          logo.style.opacity = 0;
-          name.style.opacity = 0;
-          setTimeout(() => {
-            logo.src = originalLogo;
-            name.textContent = originalName;
-            logo.style.opacity = 1;
-            name.style.opacity = 1;
-          }, 300);
-
-          totalSavings -= alt.savings;
-          savingsEl.textContent = '0€';
-          button.textContent = 'Opter pour l’alternative';
-          card.setAttribute('data-chosen', 'false');
-        }
-
-        document.getElementById('total').textContent = `Total économies : ${totalSavings}€`;
-      }
-
-      function resetTotal() {
-        totalSavings = 0;
-        const cards = document.querySelectorAll('.software-card');
-        cards.forEach((card) => {
-          const logo = card.querySelector('.logo');
-          const name = card.querySelector('.name');
-          const savingsEl = card.querySelector('.savings');
-          const originalName = card.getAttribute('data-original-name');
-          const originalLogo = card.getAttribute('data-original-logo');
-          logo.src = originalLogo;
-          name.textContent = originalName;
-          savingsEl.textContent = '0€';
-          card.setAttribute('data-chosen', 'false');
-          const button = card.querySelector('button');
-          button.textContent = 'Opter pour l’alternative';
-        });
-
-        document.getElementById('total').textContent = `Total économies : 0€`;
-      }
-    </script>
-    <n-footer title-src="img/LogoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
-
-    <script type="module" src="./components/index.js"></script>
-    <script type="module" src="./components/camera.js"></script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const el = document.querySelector('.menu-jeu');
-        console.log('menu-info:', el);
-        if (el) el.style.borderBottom = '2px solid black';
->>>>>>> 68469d99180eb49536d8f40043021a6e1f223e33
       });
 
       document.getElementById('total').textContent = `Total économies : 0€`;
