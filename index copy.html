@@ -1,100 +1,174 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/camera.css" />
+    <title>Accueil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/reset.css" />
-  <link rel="stylesheet" href="./styles/index.css" />
-  <link rel="stylesheet" href="./styles/camera.css" />
-  <title>Accueil</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
-    rel="stylesheet" />
-</head>
+  <body>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.149/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.149/examples/jsm/"
+        }
+      }
+    </script>
+    <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 
-<body>
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.149/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.149/examples/jsm/"
-    }
-  }
-  </script>
-  <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
-
-  <div class="welcome" id="welcome">
-    <div id="viewer"></div>
-    <h1><span>Super</span><span>Titre</span></h1>
-    <div class="cursor-ball"></div>
-  </div>
-
-  <div class="infos-container">
-
-    <p>La démarche NIRD accompagne les établissements scolaires vers un Numérique Inclusif Responsable et Durable, en
-      s’appuyant notamment sur l’adoption progressive de Linux et de logiciels libres. Nous voulons que les institutions
-      apprennent à maîtriser l’outil numérique plutôt que de le subir..</p>
-
-    <div class="info">
-      <h2>74 millions d’€</h2>
-      <p>Montant signé par l’Éducation nationale (18 mars 2025) pour des solutions et services Microsoft.</p>
+    <div class="welcome" id="welcome">
+      <div id="viewer"></div>
+      <h1><span>Super</span><span>Titre</span></h1>
+      <div class="cursor-ball"></div>
     </div>
 
-    <div class="info">
-
-      <h2>400 millions d'appareils</h2>
-      <p>Nombre d’appareils qui risquent de partir à la décharge après l’obsolescence de Windows 10 (depuis 14 octobre
-        2025).</p>
-    </div>
-
-    <div class="info">
-
-      <h2>+7ans</h2>
-      <p>de durée de vie moyenne pour un appareil lorsqu’il fonctionne sous Linux.</p>
-    </div>
-
-    <div class="info">
-
-      <h2>2 millions d’€ économisés</h2>
-      <p>en 6 ans, grâce au développement interne et aux logiciels libres (Commune d’Échirolles).</p>
-    </div>
-
-    <div class="info">
-
-      <h2>8 millions d’€ d’économies</h2>
-      <p>réalisés par la Gendarmerie nationale
+    <div class="infos-container">
+      <p>
+        La démarche NIRD accompagne les établissements scolaires vers un Numérique Inclusif Responsable et Durable, en
+        s’appuyant notamment sur l’adoption progressive de Linux et de logiciels libres. Nous voulons que les
+        institutions apprennent à maîtriser l’outil numérique plutôt que de le subir..
       </p>
-    </div>
 
-    <div class="info">
-
-      <h2>et pourtant …75 %</h2>
-      <div class="progress-container">
-        <div class="progress-bar" style="width: 75%;"></div>
+      <div class="texte-special">
+        <h2>L'Outil numérique : <br />un enjeu</h2>
+        <div class="special-flex">
+          <h2 class="gros-special">Eco</h2>
+          <h2 class="petit-special">logique & <br />nomique</h2>
+        </div>
       </div>
 
-      <p>des ordinateurs dans le monde tournent encore sous Windows.
-      </p>
+      <div class="info">
+        <h2>74 millions d’€</h2>
+        <p>Montant signé par l’Éducation nationale (18 mars 2025) pour des solutions et services Microsoft.</p>
+      </div>
+
+      <div class="info">
+        <h2>400 millions d'appareils</h2>
+        <p>
+          Nombre d’appareils qui risquent de partir à la décharge après l’obsolescence de Windows 10 (depuis 14 octobre
+          2025).
+        </p>
+      </div>
+
+      <div class="info">
+        <h2>+7ans</h2>
+        <p>de durée de vie moyenne pour un appareil lorsqu’il fonctionne sous Linux.</p>
+      </div>
+
+      <div class="info">
+        <h2>2 millions d’€ économisés</h2>
+        <p>en 6 ans, grâce au développement interne et aux logiciels libres (Commune d’Échirolles).</p>
+      </div>
+
+      <div class="info">
+        <h2>8 millions d’€ d’économies</h2>
+        <p>réalisés par la Gendarmerie nationale</p>
+      </div>
+
+      <div class="info">
+        <h2>et pourtant …75 %</h2>
+        <div class="progress-container">
+          <div class="progress-bar" style="width: 75%"></div>
+        </div>
+
+        <p>des ordinateurs dans le monde tournent encore sous Windows.</p>
+      </div>
+
+      <img src="img/logoNIRD.svg" alt="Logo NIRD suiveur" id="follower-logo" />
+
+      <svg id="path-svg" viewBox="0 0 100 1000" preserveAspectRatio="xMinYMin meet">
+        <path
+          id="zig-zag-line"
+          d="M 50 0 L 10 120 L 90 240 L 30 360 L 70 480 L 10 600 L 90 720 L 50 840 L 10 960 L 50 1000"
+        />
+      </svg>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script type="module" src="./components/index.js"></script>
+    <script type="module" src="./components/camera.js"></script>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
-  </div>
+        const follower = '#follower-logo';
+        const container = document.querySelector('.infos-container');
+        const path = document.getElementById('zig-zag-line');
+        const svg = document.getElementById('path-svg'); // Inclure tous les éléments à partir de <p> et <div.texte-special> // Nous n'utilisons que les divs .info, car ce sont elles qui sont alternées.
+        const infoDivs = document.querySelectorAll('.info'); // --- 1. FONCTION DE CALCUL DYNAMIQUE DU CHEMIN ---
 
-  <script type="module" src="./components/index.js"></script>
-  <script type="module" src="./components/camera.js"></script>
+        function generateZigZagPath() {
+          let pathData = '';
+          const points = [];
+          const containerRect = container.getBoundingClientRect();
+          infoDivs.forEach((div, index) => {
+            const rect = div.getBoundingClientRect(); // Calcul de Y (milieu vertical, inchangé)
+            const y = rect.top - containerRect.top + rect.height / 2;
 
-  <!-- <script>
-    const ball = document.querySelector(".cursor-ball");
+            let x; // 💥 NOUVELLE LOGIQUE POUR LE CÔTÉ (AXE X) // Si la carte est à gauche (index 0, 2, 4, etc. si on ne compte que les .info) // Si l'élément est à gauche, on cible son BORD DROIT
+            if (index % 2 === 0) {
+              x = rect.left - containerRect.left; // Bord droit
+            } // Si la carte est à droite (index 1, 3, 5, etc.) // Si l'élément est à droite, on cible son BORD GAUCHE
+            else {
+              x = rect.right - containerRect.left; // Bord gauche
+            }
+            points.push({ x, y });
+            if (index === 0) {
+              pathData += `M ${x} ${y}`;
+            } else {
+              pathData += ` L ${x} ${y}`;
+            }
+          });
+          if (points.length > 0) {
+            const totalHeight = containerRect.height; // Le SVG doit couvrir toute la largeur du conteneur
+            svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${totalHeight}`);
+            svg.style.width = containerRect.width + 'px';
+            path.setAttribute('d', pathData);
+          }
+        } // --- 2. EXÉCUTION ET GSAP ---
 
-    document.addEventListener("mousemove", (e) => {
-      ball.style.left = `${e.clientX}px`;
-      ball.style.top = `${e.clientY}px`;
-    });
+        generateZigZagPath();
+        const motionTween = gsap.to(follower, {
+          motionPath: {
+            path: '#zig-zag-line',
+            align: '#zig-zag-line',
+            alignOrigin: [0.5, 0.5],
 
-  </script> -->
-</body>
+            immediateRender: true,
+          },
+          ease: 'none',
+          duration: 1,
+        });
 
+        ScrollTrigger.create({
+          animation: motionTween,
+          trigger: '.infos-container',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true, // markers: true
+        }); // 4. Relancer les calculs en cas de changement (resize/load)
+        window.addEventListener('resize', () => {
+          generateZigZagPath();
+          ScrollTrigger.refresh();
+        });
+
+        window.addEventListener('load', () => {
+          generateZigZagPath();
+          ScrollTrigger.refresh();
+        });
+      });
+    </script>
+  </body>
 </html>
