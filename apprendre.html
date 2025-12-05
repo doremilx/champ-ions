@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <style>
+        h3{
+            font-family: 'Titan One';
+            font-weight: normal;
+        }
+        h3 span{
+            background-color: #f2d160;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 50px;
+            aspect-ratio: 1/1;
+            margin-right: 8px;
+        }
+        body{
+            background-color: #977dff;
+            color: white;
+            font-family: 'Raleway', sans-serif;
+        }
+        .step div {
+            display: flex;
+        }
+        .step-1 button {
+            border: solid 2px;
+            font-size: 1.1rem;
+            background: #e0d1f1;
+            padding: 5px 20px;
+            border-radius: 10px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+        }
+    </style>
+    <main>
+        <section>
+            <h2>Installation de Linux</h2>
+            <p></p>
+            <div class="step-1 step">
+                <h3><span>1</span>Téléchargement</h3>
+                <p>Clique sur le bouton pour télécharger la version de Linux NIRD.</p>
+                <button>Linux NIRD ↓</button>
+            </div>
+            <div class="step-2 step">
+                <h3><span>2</span>Création de la clé</h3>
+                <p>Insère une clé USB vierge sur laquelle on grave le fichier téléchargé.</p>
+                <button>→ Graver avec Ventoy</button>
+            </div>
+            <div class="step-3 step">
+                <h3><span>3</span>Redémarrage</h3>
+                <p>Garde la clé USB insérée et redémarre ton appareil.</p>
+                <button>Rédémarrer</button>
+            </div>
+            <div class="step-4 step">
+                <h3><span>4</span>Ouvrir le menu Boot</h3>
+                <p>Dès le redémarrage, appuie sur la touche (souvent F12) pour ouvir le <span>menu Boot</span> de ton appareil.</p>
+                <div>
+                    <button>F11</button>
+                    <button>F12</button>
+                    <button>Inser</button>
+                </div>
+            </div>
+            <div class="step-5 step">
+                <h3><span>5</span>Utilisation de la clé</h3>
+                <p>Dans le menu choisi de démarrer avec l'option USB.</p>
+                <button>Windows Boot</button>
+                <button>> USB HDD [Linux NIRD]</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
