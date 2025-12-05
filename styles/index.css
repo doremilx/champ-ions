@@ -33,6 +33,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #f2cf5f;
+  margin-left: 200px;
+  margin-right: auto;
 }
 .texte-special > h2 {
   margin-bottom: -50px;
@@ -154,5 +157,8 @@ h2 {
   }
   #viewer {
     margin-left: 100px !important;
+  }
+  .texte-special {
+    margin: 0;
   }
 }
