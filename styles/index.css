@@ -1,6 +1,6 @@
 body {
   font-family: 'Raleway', sans-serif;
-  background: linear-gradient(#977dff 0%, #0033ff 80%, #0600ab 100%);
+  background: linear-gradient(#030023 0%, #0025ba 80%, #6f4bff 100%);
   background-attachment: fixed;
 }
 
@@ -77,6 +77,9 @@ body {
   padding: 10px;
   /* 💥 Rendre le conteneur parent pour positionner le SVG */
   position: relative;
+  background-image: url(../img/alveoles.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* 💥 Nouveaux styles pour le SVG et le Logo */
