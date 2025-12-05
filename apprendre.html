@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Installation de Linux Interactive</title>
-    <link rel="icon" href="img/LogoNIRD.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,62 +11,167 @@
       rel="stylesheet"
     />
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         background-color: #977dff;
         color: white;
         font-family: 'Raleway', sans-serif;
+        margin: 0;
+        padding: 20px;
       }
+
       h3 {
         font-family: 'Titan One';
         font-weight: normal;
+        font-size: 1.8rem;
+        margin: 0 0 10px 0;
       }
+
       h3 span {
-        background-color: #f2d160;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: #f2d160;
+        clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        text-align: center;
+        line-height: 50px;
+        margin-right: 10px;
         color: black;
-        padding: 5px 10px;
-        border-radius: 50px;
-        aspect-ratio: 1/1;
-        margin-right: 8px;
+        font-size: 1.2rem;
       }
+
       .step {
-        padding: 15px;
+        padding: 12px;
         border-radius: 10px;
         margin-bottom: 15px;
         background: #8c73ff;
         transition: 0.3s;
       }
+
       .step.locked {
         opacity: 0.5;
         pointer-events: none;
       }
+
       .step.done {
         border: 2px solid #1d72b8;
         background: #b7a8ff;
       }
+
       .step.active {
         border: 2px solid #2ea44f;
       }
+
       .step div {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 10px;
       }
+
       .step button {
-        border: solid 2px;
-        font-size: 1.1rem;
+        border: solid 2px #ccc;
+        font-size: 1rem;
         background: #e0d1f1;
-        padding: 5px 20px;
-        border-radius: 10px;
+        padding: 6px 14px;
+        border-radius: 8px;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         cursor: pointer;
+        transition: 0.2s;
       }
+
+      .step button:hover {
+        background: #d6c6f9;
+      }
+
       canvas {
         border: 1px solid #ccc;
         display: block;
         margin: 15px 0;
         background: #222;
+      }
+
+      *,
+      *::before,
+      * ::after {
+        box-sizing: border-box;
+      }
+
+      #rewardCard {
+        width: 400px;
+        height: 250px;
+        background: linear-gradient(180deg, #738dff 0%, #e9e8f2 50%, #ffdbf6 100%);
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        font-family: Raleway, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #rewardCard h1 {
+        margin-top: 10px;
+        font-size: 2em;
+      }
+      #cardName {
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+      #cardPhoto {
+        width: auto;
+        height: 107px;
+        object-fit: cover;
+        border: 3px solid white;
+        margin-right: 10px;
+      }
+
+      .cadre {
+        border: 2px solid rgb(0, 0, 0);
+        width: 370px;
+        height: 250px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .entetecard {
+        display: flex;
+        border-bottom: 2px solid black;
+        justify-content: space-between;
+      }
+
+      .right {
+        text-align: left;
+        margin-top: 10px;
+        width: 80%;
+        margin-right: 20px;
+      }
+
+      .infocard {
+        display: flex;
+        margin: 10px;
+      }
+
+      .cadre p {
+        margin: 5px;
+      }
+
+      .textRecompense {
+        font-size: 0.8em;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .right p {
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+        width: 100%;
       }
     </style>
   </head>
