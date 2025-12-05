@@ -25,6 +25,63 @@
       color: #ffffff;
     }
 
+    /* --- FORMULAIRE AMÉLIORÉ --- */
+
+    #rewardForm {
+      width: 350px;
+      margin: 30px auto;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      font-family: Raleway, sans-serif;
+    }
+
+    #rewardForm label {
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    #rewardForm input[type='text'],
+    #rewardForm input[type='file'] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.85);
+      transition: 0.2s;
+    }
+
+    #rewardForm input[type='text']:focus,
+    #rewardForm input[type='file']:focus {
+      box-shadow: 0 0 8px #6f4bff;
+      transform: translateY(-2px);
+    }
+
+    #rewardForm button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #6f4bff, #0025ba);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    #rewardForm button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    }
+
     #rewardCard {
       width: 400px;
       height: 250px;
