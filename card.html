@@ -168,8 +168,30 @@
       padding-bottom: 5px;
       width: 100%;
     }
+
+    #downloadButton {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #6f4bff, #0025ba);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+      width: fit-content;
+      margin: auto;
+    }
+
+    #downloadButton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+      width: fit-content;
+    }
   </style>
   <body>
+    <n-header title-src="img/LogoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
     <h1>Récupère ta carte !</h1>
     <form id="rewardForm">
       <label for="firstName">Prénom :</label>
