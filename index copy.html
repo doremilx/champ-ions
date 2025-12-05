@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/camera.css" />
     <title>Accueil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,9 +16,17 @@
   </head>
 
   <body>
+    <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.149/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.149/examples/jsm/"
+    }
+  }
+  </script>
     <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 
-    <div class="welcome">
+    <div class="welcome" id="welcome">
       <div id="viewer"></div>
       <h1><span>Super</span><span>Titre</span></h1>
       <div class="cursor-ball"></div>
