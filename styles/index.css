@@ -4,6 +4,10 @@ body {
   background-attachment: fixed;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .welcome {
   height: 100vh;
   display: flex;
@@ -17,13 +21,44 @@ body {
 
 .welcome h1 {
   position: relative;
-  color: #f3d060;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
-  font-size: 8rem;
+  font-size: 5rem;
   font-family: 'Titan One', sans-serif;
   z-index: 2; /* Le texte au-dessus de la boule */
-  text-align: center;
+  line-height: 5rem;
+  max-width: 800px;
+}
+#viewer {
+  margin: 0 !important;
+}
+
+.introduction {
+  display: flex;
+  gap: 50px;
+}
+
+.texte-special {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.texte-special > h2 {
+  margin-bottom: -50px;
+}
+
+.special-flex {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+.gros-special {
+  font-size: 5em;
+}
+.petit-special {
+  font-size: 1.4em;
 }
 
 .infos-container {
@@ -32,6 +67,36 @@ body {
   align-items: center;
   gap: 20px;
   padding: 10px;
+  /* 💥 Rendre le conteneur parent pour positionner le SVG */
+  position: relative;
+}
+
+/* 💥 Nouveaux styles pour le SVG et le Logo */
+#path-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  /* S'étire sur toute la hauteur du conteneur d'infos */
+  height: 100%;
+  z-index: 1; /* Derrière le logo */
+  pointer-events: none;
+}
+
+#zig-zag-line {
+  fill: none;
+  stroke: #ffc300;
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+#follower-logo {
+  position: absolute;
+  width: 40px; /* Taille du logo */
+  height: 40px;
+  z-index: 2; /* Au-dessus du fil */
+  /* Nous utilisons la propriété 'transform' de GSAP, mais il faut une base absolute */
 }
 
 .infos-container > p {
@@ -77,5 +142,28 @@ h2 {
 @media screen and (min-width: 1200px) {
   .info {
     width: 500px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .info {
+    margin-left: 150px;
+    margin-right: auto;
+  }
+
+  .infos-container > .info:nth-child(odd) {
+    /* style pour les .info impaires */
+
+    margin-left: auto;
+    margin-right: 150px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .welcome {
+    flex-direction: column;
+  }
+  #viewer {
+    margin-left: 100px !important;
   }
 }
