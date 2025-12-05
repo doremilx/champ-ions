@@ -3,8 +3,8 @@ header {
   border-radius: 40px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin-inline: auto;
+  justify-content: space-between;
+
   border: 2px solid rgb(255, 255, 255);
   position: absolute;
   left: 50%;
@@ -13,4 +13,14 @@ header {
   top: 50px;
   background-color: rgba(234, 224, 211, 0);
   color: white;
+}
+
+header > * {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+header .right {
+  display: flex;
+  gap: 20px;
 }
