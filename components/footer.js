@@ -1,4 +1,4 @@
-class HeaderComponent extends HTMLElement {
+class FooterComponent extends HTMLElement {
   constructor() {
     super();
   }
@@ -14,17 +14,15 @@ class HeaderComponent extends HTMLElement {
     const titleSrc = this.getAttribute('title-src');
     const titleAlt = this.getAttribute('title-alt');
     this.innerHTML = `
-      <header>
+      <footer>
         <a href="/">
           <img src="${titleSrc}" alt="" width="48px"/>
           <span class="sr-only">${titleAlt}</span>
         </a>
-        <a href="index.html"> Apprendre </a>
-        <a href="jeu.html"> Jouer </a>
-        
-      </header>
+        <a href="legal.html"> Mentions légales </a>
+      </footer>
     `;
   }
 }
 
-customElements.define('n-header', HeaderComponent);
+customElements.define('n-footer', FooterComponent);
