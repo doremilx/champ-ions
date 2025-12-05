@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="img/LogoNIRD.svg" type="image/x-icon">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <title>Carte</title>
+  </head>
+
+  <style>
+    *,
+    *::before,
+    * ::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #030023 0%, #0025ba 50%, #6f4bff 100%);
+      color: #ffffff;
+    }
+
+    /* --- FORMULAIRE AMÉLIORÉ --- */
+
+    #rewardForm {
+      width: 350px;
+      margin: 30px auto;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      font-family: Raleway, sans-serif;
+    }
+
+    #rewardForm label {
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    #rewardForm input[type='text'],
+    #rewardForm input[type='file'] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.85);
+      transition: 0.2s;
+    }
+
+    #rewardForm input[type='text']:focus,
+    #rewardForm input[type='file']:focus {
+      box-shadow: 0 0 8px #6f4bff;
+      transform: translateY(-2px);
+    }
+
+    #rewardForm button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #6f4bff, #0025ba);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    #rewardForm button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    }
+
+    #rewardCard {
+      width: 400px;
+      height: 250px;
+      background: linear-gradient(180deg, #738dff 0%, #e9e8f2 50%, #ffdbf6 100%);
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      font-family: Raleway, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #rewardCard h1 {
+      margin-top: 10px;
+      font-size: 2em;
+    }
+    #cardName {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    #cardPhoto {
+      width: auto;
+      height: 107px;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-right: 10px;
+    }
+
+    .cadre {
+      border: 2px solid rgb(0, 0, 0);
+      width: 370px;
+      height: 250px;
+      padding: 10px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .entetecard {
+      display: flex;
+      border-bottom: 2px solid black;
+      justify-content: space-between;
+    }
+
+    .right {
+      text-align: left;
+      margin-top: 10px;
+      width: 80%;
+      margin-right: 20px;
+    }
+
+    .infocard {
+      display: flex;
+      margin: 10px;
+    }
+
+    .cadre p {
+      margin: 5px;
+    }
+
+    .textRecompense {
+      font-size: 0.8em;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .right p {
+      border-bottom: 2px solid black;
+      padding-bottom: 5px;
+      width: 100%;
+    }
+  </style>
+  <body>
+    <h1>Récupère ta carte !</h1>
+    <form id="rewardForm">
+      <label for="firstName">Prénom :</label>
+      <input type="text" id="firstName" name="firstName" required /><br /><br />
+
+      <label for="lastName">Nom :</label>
+      <input type="text" id="lastName" name="lastName" required /><br /><br />
+
+      <label for="photo">Photo :</label>
+      <input type="file" id="photo" name="photo" accept="image/*" /><br /><br />
+
+      <button type="submit">Générer ma carte</button>
+    </form>
+
+    <div id="rewardCard">
+      <div class="cadre">
+        <div class="entetecard">
+          <p class="enseigne">NIRD</p>
+          <p class="numero">Carte des talents n°0405122025</p>
+        </div>
+        <div class="infocard">
+          <img id="cardPhoto" src="" alt="Photo de l'utilisateur" style="display: none" />
+          <div class="right">
+            <p>Nom : <span id="cardLastName"></span></p>
+            <p>Prénom : <span id="cardFirstName"></span></p>
+            <p>Date : <span id="cardDate"></span></p>
+          </div>
+        </div>
+        <p class="textRecompense">Explorateur du numérique libre</p>
+        <p class="textRecompense">“Talent Verified” par la communauté NIRD</p>
+      </div>
+    </div>
+
+    <button id="downloadButton" style="display: none">Télécharger ma carte</button>
+  </body>
+
+  <script>
+    const form = document.getElementById('rewardForm');
+    const cardFirstNameSpan = document.getElementById('cardFirstName');
+    const cardLastNameSpan = document.getElementById('cardLastName');
+    const downloadButton = document.getElementById('downloadButton');
+    const rewardCard = document.getElementById('rewardCard');
+    const photoInput = document.getElementById('photo');
+    const cardPhotoImg = document.getElementById('cardPhoto');
+    const cardDateSpan = document.getElementById('cardDate');
+
+    // ===============================================
+    // photo
+    // ===============================================
+    photoInput.addEventListener('change', function (event) {
+      const file = event.target.files[0];
+
+      if (file) {
+        // Utilisation de FileReader pour lire le contenu du fichier
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          // e.target.result contient l'image en Base64 (Data URL)
+          cardPhotoImg.src = e.target.result;
+          cardPhotoImg.style.display = 'block';
+        };
+
+        // lecture fichier
+        reader.readAsDataURL(file);
+      } else {
+        // réunitialiser
+        cardPhotoImg.src = '';
+        cardPhotoImg.style.display = 'none';
+      }
+    });
+
+    // ===============================================
+    // formulaire
+    // ===============================================
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const date = new Date().toLocaleDateString('fr-FR');
+
+      // date
+      cardDateSpan.textContent = date;
+
+      // nom + prenom
+      cardFirstNameSpan.textContent = firstName;
+      cardLastNameSpan.textContent = lastName;
+
+      // bouton téléchargement
+      if (firstName.trim() !== '' && lastName.trim() !== '') {
+        downloadButton.style.display = 'block';
+      }
+    });
+
+    // ===============================================
+    // téléchargement
+    // ===============================================
+    downloadButton.addEventListener('click', function () {
+      const firstName = cardFirstNameSpan.textContent;
+      const lastName = cardLastNameSpan.textContent;
+
+      const fullName = `${firstName}_${lastName}`;
+
+      // html2canvas pour convertir l'élément #rewardCard en image
+      html2canvas(rewardCard, { scale: 2 }).then((canvas) => {
+        // lien
+        const link = document.createElement('a');
+
+        // nom du fichier, en remplaçant cardNameSpan.textContent par le nom combiné
+        const fileName = fullName.trim().replace(/\s/g, '_') + '_CarteRecompense.png';
+
+        link.download = fileName;
+        link.href = canvas.toDataURL('image/png');
+
+        // lancer le téléchargement
+        link.click();
+      });
+    });
+  </script>
+</html>

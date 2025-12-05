@@ -11,10 +11,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titan+One&display=swap"
     rel="stylesheet" />
+  <link rel="shortcut icon" href="img/LogoNIRD.svg" type="image/x-icon">
 </head>
 
 <body>
-  <n-header title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
+  <n-header title-src="img/LogoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-header>
 
   <div class="title">
     <h1><span class="h1-1">Au delà des</span><span>licenses payantes,</span><span class="h1-1">le guide :</span></h1>
@@ -91,6 +92,7 @@
 
     <div id="total">Total économies : 0€</div>
     <button id="resetBtn" onclick="resetTotal()">Réinitialiser</button>
+    <a class='nextstep' href="apprendre.html">Étape suivante</a>
   </div>
 
   <script>
@@ -193,7 +195,7 @@
       document.getElementById('total').textContent = `Total économies : 0€`;
     }
   </script>
-  <n-footer title-src="img/logoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
+  <n-footer title-src="img/LogoNIRD.svg" title-alt="Retour à l'accueil" title-page="Page Accueil"></n-footer>
 
   <script type="module" src="./components/index.js"></script>
   <script type="module" src="./components/camera.js"></script>

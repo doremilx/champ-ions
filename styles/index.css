@@ -97,12 +97,83 @@ body {
   font-size: 3rem;
 }
 
+/* .btn — style principal */
 .btn {
-  background-color: #f2cf5f;
-  padding: 20px;
-  font-size: 2rem;
-  border-radius: 20px;
-  border: solid 2px rgb(254, 254, 254);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 23px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #0b0b0b; /* texte sombre sur jaune clair */
+  background: linear-gradient(180deg, #f5dd78 0%, #f2d160 45%, #e6c84a 100%);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px; /* arrondi principal */
+  box-shadow: 0 8px 18px rgba(16, 12, 38, 0.2), inset 0 -2px 0 rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* variante "pille" si tu veux */
+.btn.round {
+  border-radius: 999px;
+  padding: 10px 26px;
+}
+
+/* petite icône à droite/gauche */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 1rem;
+  transform: translateY(0);
+  transition: transform 0.12s ease;
+}
+
+/* hover / focus / active */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(16, 12, 38, 0.24);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(16, 12, 38, 0.18);
+  filter: brightness(0.98);
+}
+
+/* accessibilité : focus visible */
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(242, 209, 96, 0.22), 0 10px 24px rgba(16, 12, 38, 0.22);
+}
+
+/* variante "ghost" (fond clair/transparent) */
+.btn.ghost {
+  background: transparent;
+  border: 2px solid #f2d160;
+  color: #f2d160;
+  box-shadow: none;
+}
+
+/* responsive — réduit les paddings sur petits écrans */
+@media (max-width: 420px) {
+  .btn {
+    padding: 8px 12px;
+    gap: 8px;
+    font-size: 0.98rem;
+  }
+  .btn__icon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.95rem;
+  }
 }
 
 /* 💥 Nouveaux styles pour le SVG et le Logo */
