@@ -254,11 +254,11 @@
                 }
                 function update(delta) {
                     frames++;
-                    if (keys.ArrowLeft) player.x -= 8;
-                    if (keys.ArrowRight) player.x += 8;
+                    if (keys.ArrowLeft) player.x -= 3;
+                    if (keys.ArrowRight) player.x += 3;
                     if (player.x < 0) player.x = 0; if (player.x > canvas.width - player.w) player.x = canvas.width - player.w;
                     if (frames % 50 === 0) obstacles.push({ x: Math.random() * 360, y: -20, w: 20, h: 20 });
-                    obstacles.forEach(o => o.y += 5);
+                    obstacles.forEach(o => o.y += 1);
                     obstacles = obstacles.filter(o => o.y < canvas.height);
                     if (obstacles.some(o => o.x < player.x + player.w && o.x + o.w > player.x && o.y < player.y + player.h && o.y + o.h > player.y)) {
                         timer = survivalTime;
@@ -292,10 +292,10 @@
                 // ---- Création d'une balle ----
                 function createBall() {
                     return {
-                        x: Math.random() * (canvas.width - 20) + 10,
+                        x: Math.random() * (canvas.width - 20) + 2,
                         y: 0,
                         r: 8,
-                        dy: 4 // balle lente
+                        dy: 2
                     };
                 }
 
